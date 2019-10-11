@@ -1,0 +1,84 @@
+
+
+<form ng-submit="submitLogin()">
+    <div class="row fondologin1" id="login">
+        <div class=" container-fluid col-md-6" id="imagen" ng-click="abrirLicencia()">
+            <div class="logologin">
+
+            </div>
+        </div>
+        <div class="container-fluid col-md-6 fondologin1" id="input">
+            <input type="text" ng-blur="validarUsuario(usuario.usuario)" id="contrasena" placeholder="Usuario"
+                ng-model="usuario.usuario">
+<!--            <select id="usuario" class="form-control" ng-change="UsuarioSeleccionado()" ng-model="usuario.usuario">
+                <option value="">Seleccione el Usuario</option>
+                <option value="admin">ADMINISTRADOR</option>
+                <option ng-repeat="usu in usuarios" ng-value="{{usu.IdUsuario}}">{{usu.NombreUsuario}}</option>
+            </select>-->
+            <input type="password" id="contrasena" placeholder="Contraseña" ng-model="usuario.contrasena">
+            <div class="recuperarContra">
+                <span class="rc" ng-click="RecuperarContrasenalogin()" style="color: white">Recuperar Contraseña</span>
+            </div>
+            <div><button id="entrar" type="submit" class="btn btn-danger">Entrar</button> </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="modal fade" id="btnmodallogin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            {{mensaje}}
+            </div>
+            
+        </div>
+    </div>
+</div> 
+
+
+<!--MODAL PARA VERIFICAR LA RECUPERACION DE LA CONTRASEÑA-->
+<div class="modal fade" id="Recuperarcontrasenamodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">Recuperar Contraseña</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            ¿ Desea reestablecer su contraseña ? Tenga en cuenta que se enviará una nueva contraseña al azar.
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="aceptarrecuperarcontra()">Aceptar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+        </div>
+    </div>
+</div> 
+
+<!--MODAL PARA REALIZAR EL CAMBIO DE LA CONTRASENA-->
+
+<div data-backdrop="static" data-keyboard="false" class="modal fade" id="cambiarcontrasenarecuperada" tabindex="-1" role="dialog" aria-labelledby="modalrecuperarcontra" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">CAMBIAR CONTRASEÑA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Contraseña</label>
+                    <input type="password" class="form-control" ng-model="contranueva">
+                </div>
+                <button ng-click="CambiarContra()" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

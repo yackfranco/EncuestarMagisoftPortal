@@ -1,0 +1,39 @@
+.panelgrandeServicio{
+    display: flex;
+    flex-direction: row;
+    /*background-color: red;*/
+    height: 90%;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.minipanelServicio{
+    display: flex;
+    flex-direction: column;
+    /*background-color: red;*/
+    height: 100%;
+    width: 50%;
+    padding: 10px;
+}
+
+.labelListaServicio{
+    text-align: right;
+}
+
+.botonesServicio{
+    display: flex;
+    flex-direction: row;
+    /*background-color: red;*/
+    /*height: 90%;*/
+    width: 50%;
+}
+.infotablaServicio{
+    text-align: right;
+}
+.tablaServicios{
+    display: block;
+    max-height: 460px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}

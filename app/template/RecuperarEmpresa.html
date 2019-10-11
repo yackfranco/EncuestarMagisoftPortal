@@ -1,0 +1,325 @@
+<div class="contenedoradmin" style="height: 100vh; width: 100vw;">
+    <div class="contenedoradmin1">
+        <div class="contenedorarriba">
+            <div class="contenedorarriba1">
+               <div class="contenedornavboton">
+                   
+                </div>
+                <div class="datoarribaadmin">
+
+                </div>
+                <div class="logoarribadmin">
+                   
+                </div>
+                <div class="cerrararribaadmin">
+                    <button type="button" ng-click="cerrarSesion()" class="btn btn-danger botonsaliradmin">Cerrar sesión</button>
+                </div>
+            </div> 
+        </div>
+
+        <div class="contenedorinterfaces">
+            <div class="contenedorempresa">
+                <div class="empresa1">
+                    <h1 class="tituloempresa">Empresas</h1>
+                </div>
+<!--                <div class="empresa2">
+                    <form class="fromempresa" ng-submit="submitempresa()">
+                    <div class="contenedorfromempresa">
+                        <div class="empresa2left">
+                            <div class="inputcontenedorempresa1">
+                                <div class="form-group grupoinputsempresa">
+                                    <label class="labelempresa">Nombre de la Empresa:</label>
+                                    <input type="text" class="form-control" ng-model="empresa.nombreempresa">
+                                </div>
+                            </div>
+                            <div class="inputcontenedorempresa2">
+                                <div class="form-group grupoinputsempresa1">
+                                    <label class="labelempresa">Nit de la Empresa: </label>
+                                    <input type="number" class="form-control" ng-model="empresa.nit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empresa2right">
+                            <div class="inputcontenedorempresa1">
+                                <div class="form-group grupoinputsempresa">
+                                    <label class="labelempresa">Slogan de la Empresa:</label>
+                                    <input type="text" class="form-control" ng-model="empresa.slogan">
+                                </div>
+                                </div>
+                                <div class="inputcontenedorempresa2">
+                                <div class="form-group grupoinputsempresa1">
+
+                                    <label class="labelempresa">Licencia:</label>
+                                    <br>
+                                    <input class="inputFecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" type="date" ng-model="empresa.licencia">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedorbotonfromempresa">
+                        <button type="submit" class="btn btn-success">Crear Empresa</button>   
+                    </div>
+                </form>
+                </div>-->
+                <!--TABLA empresa-->
+                <div class="empresa3 table-responsive tablascrollempresa">
+                    <table class="table table-dark table-hover "> 
+                        <thead>
+                            <tr>
+                                <th>EMPRESA</th>
+                                <th>NIT</th>
+                                <th>SLOGAN</th>
+                                <th>LICENCIA</th>
+                                <th>OPCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="emp in empresaslistas track by $index">
+                                <td>{{emp.nombreempresa}}</td> 
+                                <td>{{emp.nit}}</td>
+                                <td>{{emp.slogan}}</td>
+                                <td ng-if="emp.licencia < fechaActual">{{emp.licencia}} <div class="fa fa-square Rojolicencia"></div></td>
+                                <td ng-if="emp.licencia >= fechaActual">{{emp.licencia}} <div class="fa fa-square Verdelicencia"></div></td>
+                                <td>
+                                    <button title="Editar" class="fa fa-pencil-square-o btn btn-primary btneditarempresa" style="font-size:25px" data-toggle="modal" data-target="#editarempresa" ng-click="listarempresa(emp.idempresa)"></button>
+                                    <button title="Eliminar" class="fa fa-trash btn btn-danger btneditarempresa " style="font-size:25px" data-toggle="modal" data-target="#eliminarempresa" ng-click="listarempresaeliminar(emp.idempresa)"></button>
+                                    <button title="Usuario" class="	fa fa-user-circle btn btn-primary btneditarempresa" style="font-size:25px" data-toggle="modal" data-target="#usuarioempresa" ng-click="listarusuarioempresa(emp.idempresa)"></button>
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL PVISUALIZAR USUARIO ADMIN-->
+    <div class="modal fade" id="usuarioempresa">
+        <div class="modal-dialog">
+            <div class="modal-content modalusuarioempresa">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Usuario Administrador</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body contenedoradminempresa">
+                <div class="usuarioadminempresa">
+                    <label>Nombre:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.nombre}}</p>
+                </div>
+                <div class="usuarioadminempresa">
+                    <label>Apellido:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.apellido}}</p>
+                </div>
+                <div class="usuarioadminempresa">
+                    <label>Cedula:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.cedula}}</p>
+                </div>
+                <div class="usuarioadminempresa">
+                    <label>Correo:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.correo}}</p>
+                </div>
+                <div class="usuarioadminempresa">
+                    <label>Rol:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.rol}}</p>
+                </div>
+                <div class="usuarioadminempresa">
+                    <label>Usuario:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.nombreusuario}}</p>
+                </div>
+                 <!--
+                <div class="usuarioadminempresa">
+                    <label>Contraseña:&nbsp;&nbsp;</label>
+                    <p>{{usuarioempresa.contrasena}}</p>
+                </div>
+                -->
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#crearusuarioadmin" ng-show="crearusuario">Crear</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editarusuarioadmin" ng-show="editarusuario" ng-click="listarusuarioeditarempresa(usuarioempresa.idusuario)">Editar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA CREAR USUARIO ADMINISTRADOR -->
+    <div class="modal fade" id="crearusuarioadmin">
+        <div class="modal-dialog">
+            <form ng-submit="crearusuarioempresa()">
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Crear Administrador</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                
+                    <div class="form-group grupoinputseditempresa">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" ng-model="crearuserempresa.nombre">
+                        <label>Apellido:</label>
+                        <input type="text" class="form-control" ng-model="crearuserempresa.apellido">
+                        <label>Cédula:</label>
+                        <input type="text" class="form-control" ng-model="crearuserempresa.cedula">
+                        <label>Correo Eléctronico:</label>
+                        <input type="email" class="form-control" ng-model="crearuserempresa.correo">
+                        <label>Usuario:</label>
+                        <input type="text" class="form-control" ng-model="crearuserempresa.nombreusuario">
+                        <label>Contraseña:</label>
+                        <input type="password" class="form-control" ng-model="crearuserempresa.contrasena">
+                        <label>Confirmar Contraseña:</label>
+                        <input type="password" class="form-control" ng-model="crearuserempresa.contrasena1">
+                    </div>
+                
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+            </div>
+            </div>
+            </form>
+        </div>
+    </div> 
+
+    <!-- MODAL PARA EDITAR USUARIO ADMINISTRADOR -->
+    <div class="modal fade" id="editarusuarioadmin">
+        <div class="modal-dialog">
+            <form >
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Usuario Administrador</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group grupoinputseditempresa">
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" ng-model="editusuarioadmin.nombre">
+                    <label>Apellido:</label>
+                    <input type="text" class="form-control" ng-model="editusuarioadmin.apellido">
+                    <label>Cédula:</label>
+                    <input type="text" class="form-control" ng-model="editusuarioadmin.cedula">
+                    <label>Correo Eléctronico:</label>
+                    <input type="text" class="form-control" ng-model="editusuarioadmin.correo">
+                    <label>Usuario:</label>
+                    <input type="text" class="form-control" ng-model="editusuarioadmin.nombreusuario">
+                    <label>Contraseña:</label>
+                    <input type="password" class="form-control" ng-model="editusuarioadmin.contrasena1">
+                    <label>Confirmar Contraseña:</label>
+                    <input type="password" class="form-control" ng-model="editusuarioadmin.contrasena2">
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" ng-click="editarusuarioempresa(editusuarioadmin.idusuario)" >Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+            </div>
+            
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL PARA ELIMINAR USUARIO ADMINISTRADOR -->
+    <div class="modal fade" id="eliminarusuarioadmin">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Administrador</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                Deseas Eliminar El Administrador ?
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+            
+            </div>
+        </div>
+    </div> 
+    
+    <!-- MODAL PARA EDITAR EMPRESA -->
+    <div class="modal fade" id="editarempresa">
+        <div class="modal-dialog">
+            <form >
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Empresa</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                
+                    <div class="form-group grupoinputseditempresa">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" ng-model="editempresa.nombreempresa">
+                        <label>Nit:</label>
+                        <input type="text" class="form-control" ng-model="editempresa.nit">
+                        <label>Slogan:</label>
+                        <input type="text" class="form-control" ng-model="editempresa.slogan">
+                        <label>Licencia:</label>
+                        <input type="date" class="inputFecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-value="editempresa.licencia" ng-model="editempresa.fachelicencia">
+                    </div>
+                
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="editarempresa(editempresa.idempresa)">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+            </div>
+            
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL PARA ELIMINAR EMRPESA -->
+    <div class="modal fade" id="eliminarempresa">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Empresa</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                Deseas Eliminar la empresa ?
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="eliminarempresa()">Eliminar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+            
+            </div>
+        </div>
+    </div> 
+
+    <!--MODAL PARA CONTROLAR EL FORMULARIO USUARIO-->  
+    <div class="modal fade" id="btnformularioempresa">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                {{mensaje}}
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
+
+
+

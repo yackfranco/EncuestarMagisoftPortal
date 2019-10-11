@@ -1,0 +1,63 @@
+<div class="contenedoradmin" style="height: 100vh; width: 100vw;">
+    <div class="contenedoradmin1">
+        <div class="contenedorarriba">
+            <div class="contenedorarriba1">
+                <div class="datoarribaadmin">
+                    <h2> {{nombreasesor}} {{apellidoasesor}}</h2>
+                </div>
+                <div class="logoarribadmin">
+                    B
+                </div>
+                <div class="cerrararribaadmin">
+                    <button type="button" ng-click="cerrarSesion()" class="btn btn-danger botonsaliradmin">Cerrar sesión</button>                    
+                </div>
+            </div>
+        </div>
+        <div class="contenedorinterfaces">
+            <div class="contenedorasesor">
+                <div class="asesor1">
+                    <div class="asesorcontenido1">                            
+                        <div class="contenedormodocalificacion">
+                            <div class="contenedortrabajo">
+                                <p>Metodo de trabajo: {{metodoasesor}}</p>
+                                <p>Modo de trabajo: {{modoasesor}}</p>
+                            </div>
+                            <div class="contenedorasesordatos">
+                                <p>Asesor: {{nombreasesor}} {{apellidoasesor}}</p>
+                                
+                            </div>
+                            <div class="contenedorempresadatos">
+                                <p>Empresa: {{empresaasesor}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contenedormodocalificacion2">
+                        <div class="contenedorpregunta">
+                            <p class="preguntaasesor">{{encuestas}}</p>
+                        </div>
+                        <div class="contenedorcarga">
+                            <div ng-show="esperandocalif" class="onloadloading" onload="myFunction()">
+                                <div id="loader"></div>
+                            </div>
+                            <div ng-show="enviadocalif" class="calificontenedoraceptada">
+                                <i class="fa fa-check-circle califiaceptada"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <p ng-show="esperandocalifmensaje1" id="textocalificador1" style="font-size: 20px; color: white">Califiacion Aceptada</p>
+                            <p ng-show="esperandocalifmensaje" id="textocalificador" style="font-size: 20px; color: white">Esperando la calificación del cliente</p>
+                        </div>
+                        <div class="contendorcalificar">
+                            <button ng-hide="enviadobotonhide" class=" btn btn-primary" ng-click="calificar()">Calificar</button>
+                            <button ng-show="enviadobotonss" class="calificar" id="simularenviar" ng-click="enviarcalifi()">enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

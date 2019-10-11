@@ -1,0 +1,219 @@
+<div class="cuerpo">
+
+    <div class="panelSuperior">
+        <div class="nombreusuario">
+            {{NombreUsuario}}
+        </div>
+
+        <div class="logo">
+            <!--logo-->
+              <img src="image/LOGO 3.png" alt="" ng-click="ClicItem('dashboard')" class="logo2 logoArribaMenu"/>
+        </div>
+
+        <div class="logout" ng-click="cerrarSesion()">
+            <img src="image/logout.png" alt="" style="width: 25px; height: 25px; margin-right: 10px"/>
+            Cerrar Sesión
+        </div>
+
+    </div>
+
+    <div class="panelMedio">
+        <div class="paneliz">
+            <div class="usuario">
+                {{TipoUsuario}}
+            </div>
+            <div class="items" ng-click="ClicItem('dashboard')"  style="background-color: #b9bbbe; font-weight: bold;">
+                <div class="icono">
+                    <img src="image/home.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Home
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Modulo')">
+                <div class="icono">
+                    <img src="image/modulo.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Módulo
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Servicios')">
+                <div class="icono">
+                    <img src="image/servicio.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Servicios
+                </div>
+            </div>
+            
+            <div class="items" ng-click="ClicItem('AsigServicios')">
+                <div class="icono">
+                    <img src="image/relacionUsuarioServicio.png" alt="" style="width: 30px; height: 30px"/>
+                </div>
+                <div class="subitem">
+                    Asignación de Servicios
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Usuarios')">
+                <div class="icono">
+                    <img src="image/crearUsuario.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Usuarios 
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTurnosPerdidos')">
+                <div class="icono">
+                    <img src="image/confiTurnosPerdidos.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Config. de Turnos Perdidos
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Reportes')">
+                <div class="icono">
+                    <img src="image/reportes.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Reportes
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTv')">
+                <div class="icono">
+                    <img src="image/confiVisualizador.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    ConfigTv
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTv2')">
+                <div class="icono">
+                    <img src="image/confiVisualizador.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    ConfigTv2
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTv3')">
+                <div class="icono">
+                    <img src="image/confiVisualizador.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    ConfigTv3
+                </div>
+            </div>
+            www.ingetronik.com
+
+        </div>
+
+        <div class="panelderedash">
+            <div class="panelizqdash">
+                <div class="Panelarribadash table-responsive">
+                    <table class="table table-striped tablaCompleta" style="overflow: scroll;">
+                        <thead class="tituloTabla">
+                            <tr>
+                                <th scope="col">ASESOR</th>
+                                <th scope="col">DISPONIBILIDAD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="usu in usuario">
+                                <th scope="row" class="infotablaServiciodash">{{usu.NombreUsuario}}</th>
+                                <th scope="row" class="infotablaServiciodash">{{usu.Estado}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="Panelabajodash  table-responsive">
+                    <table class="table table-striped tablaCompleta">
+                        <thead class="tituloTabla">
+                            <tr>
+                                <th scope="col">SERVICIO</th>
+                                <th scope="col">TURNOS AUSENTES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="aus in ausentes">
+                                <th scope="row" class="infotablaServicioww">{{aus.Servicio}}</th>
+                                <th scope="row" class="infotablaServicioww">{{aus.Cantidad}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panelizqsdash">
+                <div class="Panelarribadash1  table-responsive">
+                    <table class="table  table-striped tablaCompleta">
+                        <thead class="tituloTabla">
+                            <tr>
+                                <th scope="col">SERVICIO</th>
+                                <th scope="col">TERMINADOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ser in servicio">
+                                <th scope="row" class="infotablaServicioWW">{{ser.Servicio}}</th>
+                                <th scope="row" class="infotablaServicioWW">{{ser.Cantidad}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="Panelabajodash1  table-responsive">
+                    <table class="table table-striped tablaCompleta">
+                        <thead class="tituloTabla">
+                            <tr>
+                                <th scope="col">SERVICIO</th>
+                                <th scope="col">TURNOS EN COLA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ser in ServiciosCola">
+                                <th scope="row" class="infotablaServicioww">{{ser.Servicio}}</th>
+                                <th scope="row" class="infotablaServicioww">{{ser.Cantidad}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panelizqsdash">
+                <div class="Panelarribadash1  table-responsive">
+                    <table class="table  table-striped tablaCompleta">
+                        <thead class="tituloTabla">
+                            <tr>
+                                <th scope="col">ASESOR</th>
+                                <th scope="col">TERMINADOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ser in usuariosatendidos">
+                                <th scope="row" class="infotablaServicioWW">{{ser.NombreUsuario}}</th>
+                                <th scope="row" class="infotablaServicioWW">{{ser.Cantidad}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+<!--                <div class="Panelabajodash1  table-responsive">
+                    <table class="table table-striped tablaCompleta">
+                        <thead class="tituloTabla">
+                            <tr>
+                                <th scope="col">SERVICIO</th>
+                                <th scope="col">TURNOS EN COLA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ser in ServiciosCola">
+                                <th scope="row" class="infotablaServicioww">{{ser.Servicio}}</th>
+                                <th scope="row" class="infotablaServicioww">{{ser.Cantidad}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>-->
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,115 @@
+
+.panelCentralVisualizador{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 90%;
+    width: 100%;
+}
+.numVideo{
+    width: 80px;
+}
+
+.numordervideo{
+     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+/*    height: 40%;
+    width: 40%;*/
+}
+.barraprogreso{
+    width: 80%;
+    margin-bottom: 10px;
+}
+.tablaCompletaTV{
+   
+    /*margin-top: 80px;*/
+/*    border-style: solid;
+    border-width:2px 2px 2px 2px;
+    border-color: #b9bbbe;*/
+    /*overflow: auto;*/
+    /*display: block;*/
+    /*max-height: 300px;*/
+    width: 70%;
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    /*    border-radius: 25px;*/
+}
+.cargarVideo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 40%;
+}
+
+
+.derechaVisualizador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+}
+
+.IzquierdaVisualizador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+    padding: 15px;
+    border-style: solid;
+    border-width: 0px 0px 0px 2px;
+    border-color: #686868;
+}
+
+.textTV{
+    width: 70%;
+    margin: 0px;
+    margin-bottom: 30px;
+    /*margin-right: 80px;*/
+    text-align: left;
+    margin-left: 40px;
+}
+
+.logotvConfigTv{
+    width: 60%;
+    height: 75%;
+    border-style: solid;
+    border-width:1px 1px 1px 1px;
+    border-color: #b9bbbe;
+}
+
+.botonGuardarCOnfigTV{
+    margin: 10px;
+}
+
+.botonGuardarVideos{
+    margin: 30px;
+}
+
+.botonesConfigTV{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.botonContraIp{
+    margin: 10px;
+}
+.MP4{
+   margin: 0;
+   margin-top: 3%;
+}

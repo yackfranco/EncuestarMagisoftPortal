@@ -1,0 +1,80 @@
+.principalAsigServicio{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.IzquierdaAsigServicio{
+   width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px; 
+     border-style: solid;
+    border-width:0px 1px 0px 0px;
+    border-color: #b9bbbe;
+    /*background-color: red;*/
+}
+
+.DerechaAsigServicio{
+   width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px; 
+    /*background-color: blue;*/
+}
+
+.ArribaAsigServicio{
+   width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; 
+    /*background-color: #000;*/
+}
+
+.AbajoAsigServicio{
+   width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px; 
+    /*background-color: blue;*/
+}
+
+.TablaServAsignados{
+    display: block;
+    max-height: 390px;
+    overflow-y: auto;
+        overflow-x: auto;
+        width: 100%;
+
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.TablaServNoAsignados{
+    display: block;
+    max-height: 450px;
+    overflow-y: auto;
+        overflow-x: auto;
+        width: 100%;
+
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.thead-dark th{
+    width: 10%;
+}

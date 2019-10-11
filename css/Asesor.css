@@ -1,0 +1,164 @@
+.contenedorasesor{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background-color: #D5D5D5;
+	/*border: 1px solid black;
+	/*border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;*/
+}
+
+.asesor1{
+	display: flex;
+	flex-direction: row;
+	
+	height: 100%;
+	margin: 2px;
+	background-color: #3B3B3B;
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	padding: 1%;
+}
+
+.asesorcontenido1{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+.contenedormodocalificacion2{
+  width: 75%;
+}
+
+.contenedorpregunta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 40%;
+}
+
+.preguntaasesor{
+    font-weight: bold;
+    color: white;
+    font-size: 40px;
+}
+
+.contenedorcarga{
+    display: flex;
+   
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    height: 20%;
+}
+.onloadloading{
+    width: 120px;
+    height: 120px;
+}
+
+
+#loader {
+    
+    z-index: 1;
+    border: 16px solid #FF6070;
+    border-radius: 50%;
+    border-top: 16px solid #C82333;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: 0;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+  
+  #myDiv {
+    display: none;
+    text-align: center;
+  }
+
+.contenedormodocalificacion{
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.contenedortrabajo{
+  color: white;
+  font-size: 20px;
+  width: 100%;
+}
+
+.contenedorasesordatos{
+  color: white;
+  font-size: 20px;
+  width: 100%;
+}
+
+.contenedorempresadatos{
+  color: white;
+  font-size: 20px;
+  width: 100%;
+}
+.calificontenedoraceptada{
+    width: 120px;
+    height: 120px;
+}
+
+.califiaceptada{
+  font-size:120px;
+  color: #208236;
+  font-weight: bold;
+}
+
+.contendorcalificar{
+  padding-top: 40px;
+}
+
+.calificar{
+  width: 80px; 
+  height: 30px
+}
+
+
+.sonloadloading{
+  z-index: 1;
+  border: 16px solid green;
+  border-radius: 50%;
+  border-top: 16px solid green;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 0;
+  background-color: green;
+}

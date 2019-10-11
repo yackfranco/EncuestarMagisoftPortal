@@ -1,0 +1,45 @@
+.panelgranModulo{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+.panelAribaModulo{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.panelAbajoModulo{
+     width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.imputModulo{
+    width: 80%;
+}
+.butModulo{
+    padding: 0px;
+    margin-left: 10px;
+}
+
+.divModuloP{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 85%;
+}
+.thead-fixed{
+   position: fixed
+}

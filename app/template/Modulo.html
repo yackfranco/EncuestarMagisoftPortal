@@ -1,0 +1,221 @@
+<div class="cuerpo">
+
+    <div class="panelSuperior">
+        <div class="nombreusuario">
+            {{NombreUsuario}}
+        </div>
+
+        <div class="logo">
+            <!--logo-->
+             <img src="image/LOGO 3.png" alt="" ng-click="ClicItem('dashboard')" class="logo2 logoArribaMenu"/>
+        </div>
+
+        <div class="logout" ng-click="cerrarSesion()">
+            <img src="image/logout.png" alt="" style="width: 25px; height: 25px; margin-right: 10px"/>
+            Cerrar Sesión
+        </div>
+
+    </div>
+
+    <div class="panelMedio">
+        <div class="paneliz">
+            <div class="usuario">
+                {{TipoUsuario}}
+            </div>
+            <div class="items" ng-click="ClicItem('dashboard')">
+                <div class="icono">
+                    <img src="image/home.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Home
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Modulo')"  style="background-color: #b9bbbe; font-weight: bold;">
+                <div class="icono">
+                    <img src="image/modulo.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Módulo
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Servicios')">
+                <div class="icono">
+                    <img src="image/servicio.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Servicios
+                </div>
+            </div>
+           
+            <div class="items" ng-click="ClicItem('AsigServicios')">
+                <div class="icono">
+                    <img src="image/relacionUsuarioServicio.png" alt="" style="width: 30px; height: 30px"/>
+                </div>
+                <div class="subitem">
+                    Asignación de Servicios
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Usuarios')">
+                <div class="icono">
+                    <img src="image/crearUsuario.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Usuarios 
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTurnosPerdidos')">
+                <div class="icono">
+                    <img src="image/confiTurnosPerdidos.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Config. de Turnos Perdidos
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('Reportes')">
+                <div class="icono">
+                    <img src="image/reportes.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    Reportes
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTv')">
+                <div class="icono">
+                    <img src="image/confiVisualizador.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    ConfigTv
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTv2')">
+                <div class="icono">
+                    <img src="image/confiVisualizador.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    ConfigTv2
+                </div>
+            </div>
+            <div class="items" ng-click="ClicItem('ConfigTv3')">
+                <div class="icono">
+                    <img src="image/confiVisualizador.png" alt="" style="width: 25px; height: 25px"/>
+                </div>
+                <div class="subitem">
+                    ConfigTv3
+                </div>
+            </div>
+            www.ingetronik.com
+
+        </div>
+
+        <div class="paneldere">
+            <div class="subtituloDerecha">
+                <div class="divModuloP">
+                    <h5>Módulo</h5>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-primary"  data-toggle="modal" data-target="#modalComprarModulo" >Comprar módulos</button>
+                </div>
+            </div>
+            
+            <!--ALERTAS-->
+            <div class="alert {{tipoAlerta}} alert-dismissible fade show" ng-show="MostrarAlerta" role="alert">
+                <strong>ALERTA!</strong> {{alerta}}
+                <button type="button" class="close" ng-click="cerrarAlerta()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="panelgranModulo">
+
+                <div class="panelAribaModulo">
+
+                    <div class="input-group mb-3 imputModulo">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Número del Módulo</span>
+                        </div>
+                        <input type="text" class="form-control" ng-model="NModulo" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="butModulo">
+                            <button type="button" ng-click="guardarModulo()" class="btn btn-outline-success">Guardar</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="panelAbajoModulo">
+                    <table class="table my-custom-scrollbar">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">MÓDULOS</th>
+                                <th scope="col">OPCIONES</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="mod in modulo">
+                                <th scope="row">{{mod.IdModulo}}</th>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" ng-click="EliminarModulo(mod.IdModulo, 'var')">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!--MODAL PARA ELIMINAR MODULO-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ELIMINAR</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> ELIMINAR MÓDULO {{moduloEliminar}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-click="EliminarModulo(1, 'Eliminar')">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL PARA COMPRAR MAS MODULOS-->
+<div class="modal fade" id="modalComprarModulo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">COMPRAR MÓDULOS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Si usted desea agregar más módulos</p>
+                <p>comuniquese con su asesor de ventas de INGETRONIK</p>
+                <p>Teléfono: (2) 2134848  -  315 5864909</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <a href="http://www.ingetronik.com" target="_blank" class="btn btn-primary" >Ir a página de INGETRONIK</a>
+            </div>
+        </div>
+    </div>
+</div>
+

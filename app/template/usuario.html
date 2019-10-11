@@ -1,0 +1,214 @@
+
+<div class="contenedoradmin" style="height: 100vh; width: 100vw;">
+
+    <div class="contenedoradmin1">
+        <div class="contenedoradminnavegacion" ng-include="'app/template/adminnavegacion.html'">
+
+        </div>
+        <div class="contenedoradmininterfaces">
+        <div class="contenedorarriba">
+            <div class="contenedorarriba1" ng-include="'app/template/navegacion.html'">
+
+               
+            </div> 
+        </div>
+
+        <div class="contenedorinterfaces">
+            <div class="contenedorusuarios">
+                <div class="usuarios1">
+                    <div class="usuarios101">
+                    </div>
+
+                    <div class="usuarios102">    
+                        <h1 class="titulousuario">Usuarios</h1>                    
+                    </div>
+
+                    <div class="usuarios103">     
+                        
+                        <div class="form-group busquedausuario">
+                            <label class="labelusuariosbusqueda">Buscar:</label>
+                           
+                            <input type="text" class="form-control" ng-change="busquedausuario()" ng-model="busuario" >
+                        </div>                   
+                    </div>
+                   
+                    
+                </div>
+                <div class="usuarios2">
+                    <form class="fromusuarios" ng-submit="submitusuarios()">
+                        <div class="contenedorformulariousuario">
+                            <div class="usuarios2left">  
+                                
+                                <div class="inputcontenedorusuario1">
+                                    
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Nombre Completo:</label>
+                                        <input type="text" class="form-control" ng-model="usuarios.nombre">
+                                    </div>
+                                    
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Cédula:</label>
+                                        <input type="text" class="form-control" ng-model="usuarios.cedula">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="usuarios2right">
+                               
+                                <div class="inputcontenedorusuario1">
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Usuario:</label>
+                                        <input type="text" class="form-control" ng-model="usuarios.nombreusuario">
+                                    </div>
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Correo electrónico:</label>
+                                        <input type="text" class="form-control" ng-model="usuarios.correo">
+                                    </div>
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Rol:</label>
+                                        <select class="form-control" ng-model="usuarios.rol">
+                                            <option>ASESOR</option>
+                                            <option>ADMINISTRADOR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="usuarios2right">
+                                
+                                <div class="inputcontenedorusuario1">
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Contraseña:</label>
+                                        <input type="password" class="form-control" ng-model="usuarios.contrasena">
+                                    </div>
+                                    <div class="form-group grupoinputs">
+                                        <label class="labelusuarios">Confirmar Contraseña:</label>
+                                        <input type="password" class="form-control" ng-model="usuarios.contrasena1">
+                                    </div>
+                                   
+                                </div>                                
+                            </div>
+
+                        </div>
+                        <div class="contenedorbotonfromusuario">
+                            <button type="submit" class="btn btn-success">Guardar</button>   
+                        </div>
+                    </form> 
+                </div>
+                <!--TABLA USUARIO-->
+                <div class="usuarios3 table-responsive tablascrollusuario  my-custom-scrollbarUsuarios">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>CÉDULA</th>
+                                <th>NOMBRE</th>
+                                <th>CORREO ELECTRÓNICO</th>
+                                <th>ROL</th>
+                                <th>USUARIO</th>
+                                <th>OPCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="usu in usuario">
+                                <td>{{usu.Cedula}}</td>
+                                <td>{{usu.NombreCompleto}}</td>
+                                <td>{{usu.Correo}}</td>
+                                <td>{{usu.Rol}}</td>
+                                <td>{{usu.NombreUsuario}}</td>
+                                <td>
+                                    <button title="Editar" class="fa fa-pencil-square-o btn btn-primary btneditarusuario" style="font-size:25px" data-toggle="modal" data-target="#editarusuario" ng-click="listarusuario(usu.IdUsuario)"></button>
+                                    <button title="Eliminar" class="fa fa-trash btn btn-danger btneliminarusuario " style="font-size:25px" data-toggle="modal" data-target="#eliminarusuario" ng-click="listarusuarioeliminar(usu.IdUsuario)"></button>
+                                </td>     
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+            <!--MODAL PARA ELIMINAR USUARIO-->   
+    <div class="modal fade" id="eliminarusuario">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Usuario</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                Deseas Eliminar El Usuario?
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="eliminarusuario()">Eliminar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+            
+            </div>
+        </div>
+    </div> 
+            <!--MODAL PARA EDITAR USUARIO-->  
+    <div class="modal fade" id="editarusuario">
+        <div class="modal-dialog">
+            <form>
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body modaleditusuario">
+                
+                    <div class="form-group grupoinputseditusuario">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" ng-model="editusuario.NombreCompleto">
+                        <label>Cédula:</label>
+                        <input type="text" class="form-control" ng-model="editusuario.Cedula">
+                        <label>Correo Eléctronico:</label>
+                        <input type="email" class="form-control" ng-model="editusuario.Correo">
+                        <label>Usuario:</label>
+                        <input type="text" class="form-control" ng-model="editusuario.NombreUsuario">
+                        <label>Rol:</label>
+                        <select class="form-control" ng-model="editusuario.Rol">
+                            <option>ASESOR</option>
+                            <option>ADMINISTRADOR</option>
+                        </select>
+                        <label>Contraseña:</label>
+                        <input type="password" class="form-control" ng-model="editusuario.contrasena">
+                        
+                    </div>
+                
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="editarusuario(editusuario.IdUsuario)" >Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+            </div>
+            
+            </div>
+            </form>
+        </div>
+    </div>  
+            <!--MODAL PARA CONTROLAR EL FORMULARIO USUARIO-->  
+    <div class="modal fade" id="btnformulariousuario">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                {{mensaje}}
+                </div>
+                
+            </div>
+        </div>
+    </div> 
+</div>
+
+
+
+

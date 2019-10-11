@@ -1,0 +1,124 @@
+/*CONTENEDOR DE LA NAVEGACION*/
+.contenedornavboton{
+	padding-top: 2%;
+	display: flex;
+	align-content: center;
+	width: 8%;
+	
+}
+
+.menubotones{
+	background-color: white;
+	min-width: 5.5rem;
+	padding: 0;
+	margin: 2px; 
+}
+.botonnav{
+	margin-left: 20px;
+	width: 150px;
+	height: 50px;
+}
+.botonesnav{
+	color: black;
+	display: flex;
+	align-content: center;
+	width: 100%;
+	height: 15%;
+	margin: 1%;
+
+}
+
+.navicons:hover{
+	color: blue;
+}
+
+.contenedornavegacion{
+	display: flex;
+	flex-direction: column;
+	width: 98%;
+	height: 98%;
+	
+}
+.navegacionadmin{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	height: 15%;
+	border-bottom: 1px solid white;
+}
+.urlnavegacion{
+	margin-top: 15px;
+	color: white;
+}
+.nombreusuarioadmin{
+	color: white;
+}
+
+.contenedorbotones{
+	display: flex;
+	flex-direction: column;
+	height: 70%;
+	
+}
+.contenedorlogo{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	height: 15%;
+	
+}
+.botonesconte{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	height: 16.6%;
+	border-bottom: 1px solid white;
+	cursor:pointer;
+}
+.fontboton{
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	display: flex;
+	width: 40%;
+	height: 90%;
+}
+.botonesnav1{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	color: white;
+
+}
+.fonttext{
+
+	display: flex;
+	text-align: left;
+	align-items: center;
+	color: white;
+	font-size: 20px;
+	width: 60%;
+	height: 90%;
+}
+.nombretext{
+	margin-bottom: 10px;
+}
+
+.logoencuestar{
+	background-image: url('../image/encuestarblanco.png');
+	background-repeat: none;
+	background-size: 100% 100%;
+  	padding: 10px 30px 10px 30px;
+	
+	width: 30%;
+	height: 90%;
+}
+
