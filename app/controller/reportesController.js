@@ -23,17 +23,19 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     }
 
     //FUNCION PARA LLAMAR A LA MODAL
-    function mensajemodal(mensaje) {
-        //PARA ACTIVAR UNA MODAL
-        $('#btnreportes').modal('show');
-        //MENASAJE QUE SE ENVIA POR PARAMETRO
-        $scope.mensaje = mensaje;
-        //PARA DESACTIVAR LA MODAL DESPUES DE X SEGUNDOS
-        /* var interval = $interval(function () {
-             $('#btnformulariosedes').modal('hide');
-             $interval.cancel(interval);
-             
-          }, 3000);*/
+    function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+        swal({
+            title: titulo,
+            text: mensaje
+        },
+                function () {
+                    swal.close();
+                    $interval.cancel(interval);
+                });
+        var interval = $interval(function () {
+            swal.close();
+            $interval.cancel(interval);
+        }, 3000);
     }
 
     //FUNCION PARA CONEVRTIR UN OBJETO FECHA

@@ -1,19 +1,25 @@
 ﻿angular.module('Calificadores').controller('InitController', InitController);
-InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage'];
-function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage) {
+InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$interval'];
+function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $interval) {
 
-    function mensajemodal(mensaje) {
+    function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
-            title: "ATENCIÓN",
-            text: mensaje,
-            width: '1500px'
-        });
-
+            title: titulo,
+            text: mensaje
+        },
+                function () {
+                    swal.close();
+                    $interval.cancel(interval);
+                });
+        var interval = $interval(function () {
+            swal.close();
+            $interval.cancel(interval);
+        }, 3000);
     }
+
 
     var usuarioadmin = "";
     $scope.UsuarioSeleccionado = function () {
-        //console.log($scope.usuario.usuario);
 
         if ($scope.usuario.usuario == "admin") {
             usuarioadmin = "ADMINISTRADOR";
@@ -22,33 +28,25 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             usuario = {accion: "traerusuario", idusuario: idusuario};
 
             servicios.login(usuario).then(function success(response) {
-                // console.log(response.data);
                 usuarioadmin = response.data;
             });
         }
     }
 
-    $scope.validarUsuario = function (usuario) {
-        console.log(usuario);
-        if (usuario == "" || usuario == undefined || usuario == null) {
-            return;
-        }
-        if (usuario != "ADMINISTRADOR") {
-            datos = {accion: "ValidarRol", usuario: usuario};
-            servicios.login(datos).then(function success(response) {
-                console.log(response);
-                if (response.data == "El Usuario No Existe") {
-                    alert("El Usuario no se encuentra Registrado");
-                }
-            });
-        }
-    }
 
     $scope.usuario = {};
 
     $scope.submitLogin = function () {
-        $scope.usuario.accion = "entrar";
 
+        if ($scope.usuario.usuario == "" || $scope.usuario.usuario == undefined) {
+            mensajemodal("Debe ingresar el usuario");
+            return;
+        }
+        if ($scope.usuario.contrasena == "" || $scope.usuario.contrasena == undefined) {
+            mensajemodal("Debe ingresar la contraseña");
+            return;
+        }
+        $scope.usuario.accion = "entrar";
         if ($scope.usuario.usuario == "ADMINISTRADOR" && $scope.usuario.contrasena == "1235813A100") {
             $LocalStorage.usuarioguardado = "ingetronik";
             $LocalStorage.rolguardado = "ADMINISTRADOR";
@@ -56,8 +54,12 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             $state.go('Empresas');
         } else {
             servicios.login($scope.usuario).then(function success(response) {
+                if (response.data == "usuariomal") {
+                    mensajemodal("El usuario no esta registrado, intente con otro", "USUARIO INCORRECTO");
+                    return;
+                }
                 if (response.data == "contrasenamal") {
-                    mensajemodal("La Contraseña Ingresada Es Incorrecto");
+                    mensajemodal("La contraseña ingresada es incorrecta");
                 } else {
                     if (response.data.Estado == "Licencia") {
                         mensajemodal("La fecha de licencia a expirado por favor comuniquese con ingetronik");

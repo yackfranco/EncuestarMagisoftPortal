@@ -32,17 +32,19 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     }
 
 
-    function mensajemodal(mensaje){
-        //PARA ACTIVAR UNA MODAL
-        $('#btnformularioconfigusuario').modal('show');
-        //MENASAJE QUE SE ENVIA POR PARAMETRO
-        $scope.mensaje = mensaje;
-        //PARA DESACTIVAR LA MODAL DESPUES DE X SEGUNDOS
-        /*var interval = $interval(function () {
-            $('#btnformularioconfigusuario').modal('hide');
+   function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+        swal({
+            title: titulo,
+            text: mensaje
+        },
+                function () {
+                    swal.close();
+                    $interval.cancel(interval);
+                });
+        var interval = $interval(function () {
+            swal.close();
             $interval.cancel(interval);
-            
-         }, 3000);*/
+        }, 3000);
     }
 
 

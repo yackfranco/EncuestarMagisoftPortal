@@ -8,13 +8,8 @@
             </div>
         </div>
         <div class="container-fluid col-md-6 fondologin1" id="input">
-            <input type="text" ng-blur="validarUsuario(usuario.usuario)" id="contrasena" placeholder="Usuario"
+            <input type="text" id="contrasena" placeholder="Usuario"
                 ng-model="usuario.usuario">
-<!--            <select id="usuario" class="form-control" ng-change="UsuarioSeleccionado()" ng-model="usuario.usuario">
-                <option value="">Seleccione el Usuario</option>
-                <option value="admin">ADMINISTRADOR</option>
-                <option ng-repeat="usu in usuarios" ng-value="{{usu.IdUsuario}}">{{usu.NombreUsuario}}</option>
-            </select>-->
             <input type="password" id="contrasena" placeholder="Contraseña" ng-model="usuario.contrasena">
             <div class="recuperarContra">
                 <span class="rc" ng-click="RecuperarContrasenalogin()" style="color: white">Recuperar Contraseña</span>

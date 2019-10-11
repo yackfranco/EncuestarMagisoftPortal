@@ -33,9 +33,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         if (string.includes("#") || string.includes("$") || string.includes("´"))
         {
             return true;
-            /*
-             document.getElementById(campo).select();
-             document.getElementById(campo).focus();*/
+
         }
     }
 
@@ -49,31 +47,28 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
     }
 
     //FUNCION PARA LLAMAR A LA MODAL
-    function mensajemodal(mensaje) {
-        //PARA ACTIVAR UNA MODAL
-//        $('#btnformulariousuario').modal('show');
-        //MENASAJE QUE SE ENVIA POR PARAMETRO
-//        $scope.mensaje = mensaje;
+   function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
-            title: "ATENCIÓN",
-            text: mensaje,
-            width: '800px'
-        });
-        //PARA DESACTIVAR LA MODAL DESPUES DE X SEGUNDOS
+            title: titulo,
+            text: mensaje
+        },
+                function () {
+                    swal.close();
+                    $interval.cancel(interval);
+                });
         var interval = $interval(function () {
-//            $('#btnformulariousuario').modal('hide');
             swal.close();
             $interval.cancel(interval);
         }, 3000);
     }
 
-    //FUNCION PARA VALIDAR EL CORREO ELECTRONICO
+//FUNCION PARA VALIDAR EL CORREO ELECTRONICO
     function validar_email(email) {
         var patron = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         return patron.test(email) ? true : false;
     }
 
-    //FUNCION PARA CONEVRTIR UN OBJETO FECHA
+//FUNCION PARA CONEVRTIR UN OBJETO FECHA
     function convertDatePickerTimeToMySQLTime(str) {
         var month, day, year, hours, minutes, seconds;
         var date = new Date(str),
@@ -142,7 +137,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         }
     }
 
-    //FUNCION PARA REGISTRAR UN USUARIO EN EL SISTEMA
+//FUNCION PARA REGISTRAR UN USUARIO EN EL SISTEMA
     $scope.submitEmpresa = function () {
         //VALIDA LOS CAMPOS LLAMANDO LA FUNCION
         if (comprobarempty($scope.empresas["nombre"])
@@ -173,7 +168,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         }
     }
 
-    //FUNCION PARA ENLISTAR EL USUARIO A EDITAR
+//FUNCION PARA ENLISTAR EL USUARIO A EDITAR
     $scope.listarEmpresa = function (idusuario) {
         datos = {accion: "listarempresas"};
         datos.idusuario = idusuario;
@@ -184,7 +179,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         });
     }
 
-    //FUNCION PARA EDITAR UN USUARIO EN EL SISTEMA
+//FUNCION PARA EDITAR UN USUARIO EN EL SISTEMA
     $scope.editarEmpresas = function (idusuario) {
         //VALIDA LOS CAMPOS LLAMANDO LA FUNCION
         console.log($scope.editEmpresa);
@@ -214,7 +209,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         }
     }
 
-    //FUNCION PARA TOMAR EL ID DEL USUARIO A ELIMINAR
+//FUNCION PARA TOMAR EL ID DEL USUARIO A ELIMINAR
     var idEliminar = "";
     $scope.listarEmpresaeliminar = function (idusuario) {
         idEliminar = idusuario;
@@ -227,7 +222,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         console.log(idEliminarEmpresaFisico);
     }
 
-    //FUNCION PARA ELIMINAR USUARIO
+//FUNCION PARA ELIMINAR USUARIO
     $scope.eliminarEmpresa = function () {
         datos = {accion: "eliminarEmpresa", idusuario: idEliminar};
         console.log(idEliminar);
@@ -246,7 +241,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         });
     }
 
-    //FUNCION PARA ELIMINAR CALIFICACION
+//FUNCION PARA ELIMINAR CALIFICACION
     $scope.listarCalifeliminar = function (IdValor) {
         console.log(idEliminar);
         datos = {accion: "eliminarCalificacion", IdValor: IdValor};

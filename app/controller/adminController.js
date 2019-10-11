@@ -22,19 +22,20 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     totalcalificaciones();
 
     //FUNCION PARA LLAMAR A LA MODAL
-    function mensajemodal(mensaje) {
-        //PARA ACTIVAR UNA MODAL
-        $('#btnformulariousuario').modal('show');
-        //MENASAJE QUE SE ENVIA POR PARAMETRO
-        $scope.mensaje = mensaje;
-        //PARA DESACTIVAR LA MODAL DESPUES DE X SEGUNDOS
+   function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+        swal({
+            title: titulo,
+            text: mensaje
+        },
+                function () {
+                    swal.close();
+                    $interval.cancel(interval);
+                });
         var interval = $interval(function () {
-            $('#btnformulariousuario').modal('hide');
+            swal.close();
             $interval.cancel(interval);
-
         }, 3000);
     }
-
     function tablacalificaciones() {
         datos = {accion: "tablacalificaciones", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.admin(datos).then(function success(response) {
