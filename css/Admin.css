@@ -104,3 +104,43 @@
     padding: 0.3%;
 }
 /****************************************************/
+.tablaVerUsuarios td, .tablaVerUsuarios th {
+    padding: .1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    font-size: 13px;
+}
+
+.parametrosVerUsuarios{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    width: 50%;
+    color: black;
+    padding-left: 50px;
+}
+.botonReporteMonitorearUsuario{
+    background-color: green;
+}
+
+.monitor {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    width: 20%;
+}
+.botonsaliradmin1 {
+    margin-left: 5%;
+    height: 50%;
+    background-color: #C2C3C8;
+    border-color: #C2C3C8;
+}
+.modalreporteusuarios {
+    background-color: #C4C5CA;
+}
+.botonReporteMonitorearUsuario {
+    height: 65px;
+}

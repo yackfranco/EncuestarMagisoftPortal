@@ -1,41 +1,89 @@
-<!-- <div class="contenedornavboton">
-    <button type="button" class="btn btn-light dropdown-toggle botonnav" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <i class="fa fa-navicon" style="font-size:30px"></i>
-    </button>
-    <div class="dropdown-menu menubotones">
-        <button ng-click="ClicItem('calificaciones')" title="Calificaciones" type="button"
-            class="btn btn-dark dropdown-item botonesnav"><i class="fa fa-check-square "
-                style="font-size:30px"></i></button>
-        
-        <div class="dropdown-divider"></div>
-        <button ng-click="ClicItem('usuario')" title="Usuarios" type="button"
-            class="btn btn-dark dropdown-item botonesnav"><i class="fa fa-group" style="font-size:30px"></i></button>
-        <div class="dropdown-divider"></div>
-        <button ng-click="ClicItem('configusuarios')" title="Config. Usuarios" type="button"
-            class="btn btn-dark dropdown-item botonesnav"><i class="fa fa-gears" style="font-size:30px"></i></button>
-        <div class="dropdown-divider"></div>
-        <button ng-click="ClicItem('sedes')" title="Sedes" type="button"
-            class="btn btn-dark dropdown-item botonesnav"><i class="fa fa-institution"
-                style="font-size:30px"></i></button>
-        <div class="dropdown-divider"></div>
-        <button ng-click="ClicItem('paquete')" title="Preguntas" type="button"
-            class="btn btn-dark dropdown-item botonesnav"><i class="fa fa-question-circle"
-                style="font-size:30px"></i></button>
-        <div class="dropdown-divider"></div>
-        <button ng-click="ClicItem('reportes')" title="Reportes" type="button"
-            class="btn btn-dark dropdown-item botonesnav"><i class="fa fa-file-text"
-                style="font-size:30px"></i></button>
-    </div>
-</div> -->
+
 <div class="datoarribaadmin">
     <!-- <h4>{{nombrecompletoadmin}}</h4> -->
 </div>
 <div class="logoarribadmin">
     <div class="logoencuestar">
-        
+
     </div>
+</div>
+<div class="monitor">
+    <button type="button" data-toggle="tooltip" data-placement="bottom" title="Monitorear Usuarios" ng-click="VerUsuarios()" style="margin-right: 10px;" class="btn btn-primary botonsaliradmin1 "><i class="fa fa-desktop" style="font-size:24px; color: #444545;"></i></button>     
 </div>
 <div class="cerrararribaadmin">
     <button type="button" ng-click="cerrarSesion()" class="btn btn-danger botonsaliradmin">Cerrar sesión</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="ModalVerUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-target=".bd-example-modal-lg">
+    <!--<div class="modal-dialog" role="document">-->
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal" style="HEIGHT: 550PX;">
+            <div class="modal-header modalreporteusuarios">
+                <h5 class="modal-title" id="exampleModalLabel">Estado de los usuarios</h5>
+                <div class="parametrosVerUsuarios">
+                    <div>
+                        <i class="fa fa-stop" style="font-size:24px; color: green"></i>
+                        Conectado
+                    </div>
+                    <div>
+                        <i class="fa fa-stop" style="font-size:24px; color: red"></i>
+                        Desconectado
+                    </div>
+                </div>
+                <button ng-click="ReporteMonitorearUsuario()" title="ASCII" type="button"
+                        class="btn btn-dark botonReporteMonitorearUsuario"><i class="fa fa fa-file-excel-o"
+                                                                                      style="font-size:30px; color: white"></i>
+                    <p  style="color: white">EXCEL</p>
+                </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalVerUsuarios()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                <table class="table tablaVerUsuarios">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Ciudad</th>
+                            <th scope="col">Sede</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Ultima conexión</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="estilofilaUsuarios" ng-repeat="x in usuariosEstado">
+                            <td>{{x.NombreCiudad}}</td>
+                            <td>{{x.NombreSede}}</td>
+                            <td>{{x.NombreUsuario}}</td>
+                            <td>{{x.fecharegistro}}</td>
+                            <td ng-if="x.estado == 'YES'"><i class="fa fa-stop" style="font-size:24px; color: green"></i></td>
+                            <td ng-if="x.estado == 'NO'"><i class="fa fa-stop" style="font-size:24px; color: red"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--MODAL PARA DESCARGAR REPORTES-->
+<div data-backdrop="static" data-keyboard="false" class="modal fade bd-example-modal-lg" id="modalDescarga"
+    tabindex="-1" role="dialog" aria-labelledby="modalDescarga" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modalfondo">
+                <h5 class="modal-title">Reporte Generado Exitosamente</h5>
+                <button type="button" class="close modalx" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <h5 class="modal-title ">DESCARGAR</h5>
+            <div class="modal-body centrarBotonDescarga">
+                <a class="btn btnDescargar btn-success " ng-show="MostrarDescarga" href="{{linkdescarga}}" download><img
+                        src="image/la-computacion-en-nube.png" class="iconoReporteDescarga" alt="" /></a>
+            </div>
+        </div>
+    </div>
 </div>

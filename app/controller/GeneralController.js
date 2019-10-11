@@ -1,9 +1,33 @@
 angular.module('Calificadores').controller('GeneralController', InitController);
-InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage'];
-function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage) {
+InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$interval', 'urlBase', '$http'];
+function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $interval, $urlBase, $http) {
+    var datos = {};
+
+    function ListarTablaVerUsuarios() {
+        datos = {accion: "registroUsuarios"};
+        //console.log("listarusuario")        
+        servicios.usuario(datos).then(function success(response) {
+            console.log(response);
+            $scope.usuariosEstado = response.data;
+        });
+    }
+    var interval;
 
 
-    
+    $scope.VerUsuarios = function () {
+        ListarTablaVerUsuarios();
+        $('#ModalVerUsuarios').modal('show');
+        interval = $interval(function () {
+            ListarTablaVerUsuarios();
+        }, 10000);
+    }
+
+    $scope.cerrarModalVerUsuarios = function () {
+        $interval.cancel(interval);
+    }
+
+
+
     $scope.mostrar = true;
 
 
@@ -50,5 +74,16 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
         $state.go('index');
     }
 
+    $scope.ReporteMonitorearUsuario = function () {
+        $http.get($urlBase + "reporteMonitorearUsuarios.php")
+                .then(function (response) {
+                    if (response.data.respuesta == "Enviado Correctamente") {
+                        $('#modalDescarga').modal('show');
+                        $scope.MostrarDescarga = true;
+                        $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                        $scope.descargarReporteExcel = true;
+                    }
+                });
+    }
 
 }
