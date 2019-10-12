@@ -1,0 +1,73 @@
+
+<div class="contenedoradmin" style="height: 100vh; width: 100vw;">
+
+    <div class="contenedoradmin1">
+        <div class="contenedoradminnavegacion" ng-include="'app/template/adminnavegacion.html'">
+
+        </div>
+        <div class="contenedoradmininterfaces">
+            <div class="contenedorarriba">
+                <div class="contenedorarriba1" ng-include="'app/template/navegacion.html'">
+                </div>
+            </div>
+            <div class="contenedorinterfaces">
+                <div class="contenedorcalificaciones">
+                    <div class="calificaciones1">
+                        <div class="titulocalifi">
+                            <h4 class="datoscalifi">RESUMEN DE CALIFICACIONES</h4>
+                        </div>
+                        <label class="datoscalifi">Fecha Inical: {{fechacalif['data']["primerDia"]}}</label>
+                        <label class="datoscalifi">Fecha Final: {{fechacalif['data']["ultimoDia"]}}</label>
+                    </div>
+                    <div class="calificaciones2 table-responsive">
+                        <table class="table table-dark table-hover tablascrollcalifi">
+                            <thead>
+                                <tr>
+                                    <th>PREGUNTA</th>
+                                    <th ng-repeat="tipos in valorcalif">{{tipos.ValorCalif}}</th>
+                                    <th>TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="calif in calificacion">
+                                    <td>{{calif.Pregunta}}</td>
+                                    <td ng-repeat="(x, y) in calif.Calificaciones">{{y}}</td>
+                                    <td>{{calif.totalponderado}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="calificaciones3">
+                        <!--<label class="datoscalifi">NÚMERO DE CALIFICACIONES {{totalc4[0]}}</label>
+                        <div class="datoscalifi1">
+                             <p class="datoscalifi">{{valorcalif[3]["ValorCalif"]}}:&nbsp;&nbsp;<div class="califiex">{{c4}}</div>&nbsp;&nbsp;
+                                {{valorcalif[2]["ValorCalif"]}}:&nbsp;&nbsp;<div class="califibu">{{c3}}</div>&nbsp;&nbsp;
+                                {{valorcalif[1]["ValorCalif"]}}:&nbsp;&nbsp;<div class="califire">{{c2}}</div>&nbsp;&nbsp;
+                                {{valorcalif[0]["ValorCalif"]}}:&nbsp;&nbsp;<div class="califima">{{c1}}</div>&nbsp;&nbsp;
+                            </p>
+                        </div> -->
+                        <label class="datoscalifi">TOTAL CALIFICACIONES:&nbsp;&nbsp;{{totalcalificacion}}&nbsp;&nbsp;</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+
+<!--MODAL PARA CONTROLAR EL FORMULARIO USUARIO-->  
+<div class="modal fade" id="btnformulariousuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{mensaje}}
+            </div>
+
+        </div>
+    </div>
+</div>

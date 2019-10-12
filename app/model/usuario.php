@@ -37,7 +37,7 @@ if ($accion == "ingresarusuario") {
                 $validar = "Cinvalido";
             } else {
                 $sql = InsertDevolviendoID("INSERT INTO usuario (Cedula, NombreCompleto, Correo, Rol, Estado, NombreUsuario, Contrasena, EstadoContrasena, IdEmpresa) 
-                VALUES ('$cedula', '$nombre', '$correo', '$rol', 'ACTIVO', '$nombreusuario', md5($contrasena), 'NORMAL', $IdEmpresa)");
+                VALUES ('$cedula', '$nombre', '$correo', '$rol', 'ACTIVO', '$nombreusuario', '" . md5($contrasena) . "', 'NORMAL', $IdEmpresa)");
                 if ($rol == "ASESOR") {
                     $califica = hacerConsulta("INSERT INTO estilocalificacion (IdUsuario, Modo, Estilo, Metodo, MinimizarCalif, IdEmpresa) VALUES "
                             . "('$sql', 'Mono', '$pregunta', 'Automatico',1,$IdEmpresa)");

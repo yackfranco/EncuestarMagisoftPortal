@@ -1,7 +1,9 @@
 angular.module('Calificadores').controller('paqueteController', InitController);
-InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage'];
-function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage) {
-
+InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage','$interval'];
+function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage,$interval) {
+    $scope.botonpregunta = "botonescontorno";
+    $scope.botonpreguntatxt = "botonestxt";
+    $scope.botonpreguntafa = "botonesfa";
     if ($LocalStorage.usuarioguardado != undefined) {
         if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
             $state.go('paquete');
@@ -23,7 +25,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     }
 
     //FUNCION PARA LLAMAR A LA MODAL
-     function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+    function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
             title: titulo,
             text: mensaje

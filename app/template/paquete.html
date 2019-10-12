@@ -1,104 +1,100 @@
 <div class="contenedoradmin" style="height: 100vh; width: 100vw;">
     <div class="contenedoradmin1">
-        <div class="contenedoradminnavegacion" ng-include="'app/template/adminnavegacion.html'">
-
-        </div>
-        <div class="contenedoradmininterfaces">
-        <div class="contenedorarriba">
-            <div class="contenedorarriba1" ng-include="'app/template/navegacion.html'">
+        <div class="contenedoradmin1header">
+            <div class="contenedorarriba">
+                <div class="contenedorarriba1" ng-include="'app/template/navegacion.html'">
+                </div>
             </div>
         </div>
-        <div class="contenedorinterfaces">
-            <div class="contenedorsedes">
-                <div class="sedes1">
-                    <h2 class="titulosedes">ENCUESTA</h2>
-                </div>
-                <div class="sedes2">
-                    <div class="sedes2left">
-                        <form class="form-group grupoinputssede" ng-submit="ingresarpaquete()">
-                            <label class="labelsedes">Ingresar Encuesta:</label>
-                            <input placeholder="Nombre de la sede" style="
-                            margin-bottom: 10px" type="text" class="form-control"
-                                ng-model="paquetes.nombrepaquete">
-                            <button type="submit" class="btn btn-success botoncrearsede">Crear</button>
-                        </form>
-                    </div>
-                    <div class="sedes2right table-responsive tablascrollsedes  my-custom-scrollbarUsuarios">
-                        <table class="table table-dark tablasede table-hover ">
-                            <thead>
-                                <tr>
-                                    <th>ENCUESTA</th>
-                                    <th>OPCIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="paquete in listapaquete">
-                                    <td>{{paquete.Paquete}}</td>
-                                    <td>
-                                        <button title="Editar"
-                                            class="fa fa-pencil-square-o btn btn-primary btneditarusuario"
-                                            style="font-size:25px" data-toggle="modal" data-target="#editarencuesta"
-                                            ng-click="traerencuesta(paquete.IdPaquete)"></button>
-                                        <button title="Eliminar" class="fa fa-trash btn btn-danger btneliminarusuario "
-                                            style="font-size:25px" data-toggle="modal" data-target="#eliminarencuesta"
-                                            ng-click="listarencuestaeliminar(paquete.IdPaquete)"></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="sedes1">
-                    <h2 class="titulosedes">PREGUNTAS</h2>
-                </div>
-                <div class="sedes3">
-                    <div class="sedes2left">
-                        <label class="labelsedes">Elegir Encuesta:</label>
-                        <select class="form-control grupoinputssede" style="
-                        margin-bottom: 10px" ng-change="elegirpaquete(IdPaquete)"
-                            ng-model="IdPaquete">
-                            <option></option>
-                            <option ng-repeat="encuestas in listarencuestas" value="{{encuestas.IdPaquete}}">
-                                {{encuestas.Paquete}}</option>
-                        </select>
-                        <form class="form-group grupoinputssede" ng-submit="ingersarpregunta()">
-                            <label class="labelsedes">Ingresar Pregunta:</label>
-                            <input placeholder="pregunta" style="
-                            margin-bottom: 10px" type="text" class="form-control"
-                                ng-model="pregunta.Nombrepregunta">
-                            <button type="submit" class="btn btn-success botoncrearsede">Crear</button>
-                        </form>
-                    </div>
-                    <div class="sedes2right table-responsive tablascrollsedes  my-custom-scrollbarUsuarios">
-                        <table class="table table-dark tablasede table-hover ">
-                            <thead>
-                                <tr>
-                                    <th>PREGUNTA</th>
-                                    <th>OPCIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="preguntas in preguntaspaquete">
-                                    <td>{{preguntas.Pregunta}}</td>
-                                    <td>
-                                        <button title="Editar"
-                                            class="fa fa-pencil-square-o btn btn-primary btneditarusuario"
-                                            style="font-size:25px" data-toggle="modal" data-target="#editarpregunta"
-                                            ng-click="traerpregunta(preguntas.IdPregunta)"></button>
-                                        <button title="Eliminar" class="fa fa-trash btn btn-danger btneliminarusuario "
-                                            style="font-size:25px" data-toggle="modal" data-target="#eliminarpregunta"
-                                            ng-click="listarpreguntaeliminar(preguntas.IdPregunta)"></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="contenedoradminbody">
+            <div class="contenedoradminnavegacion" ng-include="'app/template/adminnavegacion.html'">
+            </div>
+            <div class="contenedoradmininterfaces">
+                <div class="contenedorinterfaces">
+                    <div class="contenedorsedes">
+                        <div class="sedes1">
+                            <h2 class="titulosedes">ENCUESTA</h2>
+                        </div>
+                        <div class="sedes2">
+                            <div class="sedes2left">
+                                <form class="form-group grupoinputssede" ng-submit="ingresarpaquete()">                                 
+                                    <label class="labelsedes">Ingresar Encuesta:</label>
+                                    <input style="margin-bottom: 10px" type="text" class="form-control borderinput" ng-model="paquetes.nombrepaquete">
+                                    <button type="submit" class="btn btn-success botoncrearsede">Crear</button>
+                                </form>
+                            </div>
+                            <div class="sedes2right table-responsive tablascrollsedes  my-custom-scrollbarUsuarios">
+                                <table class="table table-striped tablasede table-hover ">
+                                    <thead class="tablehead">
+                                        <tr>
+                                            <th>ENCUESTA</th>
+                                            <th>OPCIONES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="paquete in listapaquete">
+                                            <td>{{paquete.Paquete}}</td>
+                                            <td>
+                                                <button title="Editar"
+                                                        class="fa fa-pencil-square-o btn btn-primary btneditarusuario"
+                                                        style="font-size:25px" data-toggle="modal" data-target="#editarencuesta"
+                                                        ng-click="traerencuesta(paquete.IdPaquete)"></button>
+                                                <button title="Eliminar" class="fa fa-trash btn btn-danger btneliminarusuario "
+                                                        style="font-size:25px" data-toggle="modal" data-target="#eliminarencuesta"
+                                                        ng-click="listarencuestaeliminar(paquete.IdPaquete)"></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="sedes1">
+                            <h2 class="titulosedes">PREGUNTAS</h2>
+                        </div>
+                        <div class="sedes3">
+                            <div class="sedes2left">
+                                <label class="labelsedes">Elegir Encuesta:</label>
+                                <select class="form-control grupoinputssede borderinput" style="margin-bottom: 10px" ng-change="elegirpaquete(IdPaquete)" ng-model="IdPaquete">
+                                    <option></option>
+                                    <option ng-repeat="encuestas in listarencuestas" value="{{encuestas.IdPaquete}}">{{encuestas.Paquete}}</option>
+                                </select>
+                                <form class="form-group grupoinputssede" ng-submit="ingersarpregunta()">
+                                    <label class="labelsedes">Ingresar Pregunta:</label>
+                                    <input style="margin-bottom: 10px" type="text" class="form-control borderinput"
+                                           ng-model="pregunta.Nombrepregunta">
+                                    <button type="submit" class="btn btn-success botoncrearsede">Crear</button>
+                                </form>
+                            </div>
+                            <div class="sedes2right table-responsive tablascrollsedes  my-custom-scrollbarUsuarios">
+                                <table class="table table-striped tablasede table-hover ">
+                                    <thead class="tablehead">
+                                        <tr>
+                                            <th>PREGUNTA</th>
+                                            <th>OPCIONES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="preguntas in preguntaspaquete">
+                                            <td>{{preguntas.Pregunta}}</td>
+                                            <td>
+                                                <button title="Editar"
+                                                        class="fa fa-pencil-square-o btn btn-primary btneditarusuario"
+                                                        style="font-size:25px" data-toggle="modal" data-target="#editarpregunta"
+                                                        ng-click="traerpregunta(preguntas.IdPregunta)"></button>
+                                                <button title="Eliminar" class="fa fa-trash btn btn-danger btneliminarusuario "
+                                                        style="font-size:25px" data-toggle="modal" data-target="#eliminarpregunta"
+                                                        ng-click="listarpreguntaeliminar(preguntas.IdPregunta)"></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
 </div>
 
 <!--MODAL PARA EDITAR CIUDAD-->
@@ -107,9 +103,9 @@
         <form>
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header">
+                <div class="modal-header modalfondo">
                     <h5 class="modal-title">Editar Encuesta</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close modalx" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body modaleditusuario">
@@ -121,7 +117,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" data-dismiss="modal"
-                        ng-click="editarelpaquete(editarpaquete.IdPaquete)">Guardar</button>
+                            ng-click="editarelpaquete(editarpaquete.IdPaquete)">Guardar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -134,9 +130,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
-            <div class="modal-header">
+            <div class="modal-header modalfondo">
                 <h4 class="modal-title">Eliminar Encuesta</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close modalx" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
@@ -145,7 +141,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    ng-click="eliminarencuesta()">Eliminar</button>
+                        ng-click="eliminarencuesta()">Eliminar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -157,9 +153,9 @@
         <form>
             <div class="modal-content">
                 <!-- Modal Header -->
-                <div class="modal-header">
+                <div class="modal-header modalfondo">
                     <h5 class="modal-title">Editar Pregunta</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close modalx" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body modaleditusuario">
@@ -171,7 +167,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" data-dismiss="modal"
-                        ng-click="editarlapregunta(editarpregunta.IdPregunta)">Guardar</button>
+                            ng-click="editarlapregunta(editarpregunta.IdPregunta)">Guardar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -184,9 +180,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
-            <div class="modal-header">
+            <div class="modal-header modalfondo">
                 <h4 class="modal-title">Eliminar Pregunta</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close modalx" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
@@ -195,7 +191,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    ng-click="eliminarpregunta()">Eliminar</button>
+                        ng-click="eliminarpregunta()">Eliminar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -205,7 +201,7 @@
 <!--MODAL PARA CONTROLAR SEDE-->
 <div class="modal fade" id="btnformulariosedes">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content modalfondo">
             <div class="modal-body">
                 {{mensaje}}
             </div>

@@ -1,0 +1,135 @@
+/*CONTENEDOR DE USUARIO*/
+.contenedorconfigusuarios{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background-color: #D5D5D5;
+}
+
+.configusuarios1{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 10%;
+	margin: 2px;
+	background-color: white;
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	padding: 1%;
+}
+
+.tituloconfigusuario{
+	color: #3B3B3B;
+}
+
+.configusuarios2{
+	display: flex;
+	flex-direction: column;
+	height: 90%;
+	margin: 1px;
+	background-color: #3B3B3B;
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    padding: 5px;
+
+}
+
+.contenedorfromconfigusuario{
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+    width: 100%;
+}
+.configusuarios2left{
+    display: flex;
+    flex-direction: column;
+   
+    height: 100%;
+	width: 50%;
+	padding-top: 50px;
+}
+.configusuarios2right{
+    display: flex;
+    flex-direction: column;
+  
+    height: 100%;
+	width: 50%;
+	padding-top: 50px;
+}
+
+.contenedorbotonfromconfigusuario{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.inputcontenedorconfigusuario1{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height: 40%;
+}
+
+.inputcontenedorconfigusuario2{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height: 30%;
+}
+
+.labelconfigusuarios{
+	font-size: 20px;
+	color: white;
+}
+
+.titulofromularioconfigusuario{
+	font-size: 20px;
+	padding-top: 30px;
+	color: white;
+}
+
+.grupoinputsconfigusuario{
+	/*margin-top: 0px;*/
+	text-align: left;
+	margin: 15px;
+	width: 60%;
+}
+
+.configusuarios3{
+	display: flex;
+	height: 30%;
+	margin: 1px;
+	background-color: #3B3B3B;
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+}
+
+.ventana{
+	padding-bottom: 3%;
+	color: white;
+}
+
+.form-check-inline{
+	padding-bottom: 2%;
+}
+
+.check{
+-ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari y Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+  
+}
+.checkminimizar{
+	padding-top: 20px;
+}
+.checklist{
+	margin-right: 13px;
+}

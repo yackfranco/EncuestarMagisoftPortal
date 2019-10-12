@@ -1,10 +1,13 @@
 angular.module('Calificadores').controller('RecuperarEmpresaController', InitController);
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$interval', '$localStorage'];
 function InitController($scope, $state, $sessionStorage, servicios, $interval, $LocalStorage) {
-
+    $scope.botonRecuperarEmpresa = "botonescontorno";
+    $scope.botonRecuperarEmpresatxt = "botonestxt";
+    $scope.botonRecuperarEmpresafa = "botonesfa";
+    
     if ($LocalStorage.usuarioguardado != undefined) {
         if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
-            $state.go('Empresas');
+            $state.go('RecuperarEmpresa');
         } else {
             $state.go('index');
         }
@@ -49,7 +52,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
     }
 
     //FUNCION PARA LLAMAR A LA MODAL
-     function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+    function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
             title: titulo,
             text: mensaje
@@ -98,7 +101,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         UPfechainicial = convertDatePickerTimeToMySQLTime(FechaLicencia2);
         console.log(UPfechainicial);
     }
-    
+
     var IdEmpresaGlobal;
     $scope.listarCalificaciones = function (IdEmpresa) {
         IdEmpresaGlobal = IdEmpresa;
@@ -117,7 +120,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
             $scope.calificaciones = response.data;
         });
     }
-    
+
     $scope.GuardarCalif = function () {
         if (comprobarempty($scope.Nombre) || comprobarempty($scope.Valor)) {
             mensajemodal("Debe de Llenar Todos Los Campos");
@@ -217,7 +220,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         idEliminar = idusuario;
         console.log(idEliminar);
     }
-    
+
     var idEliminarEmpresaFisico = "";
     $scope.listarEmpresaeliminarFisico = function (idusuario) {
         idEliminarEmpresaFisico = idusuario;
@@ -233,7 +236,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
             llenarTabla();
         });
     }
-   
+
     $scope.EliminadoFisico = function (IdEmpresa) {
         datos = {accion: "eliminarEmpresaFisica", IdEmpresa: idEliminarEmpresaFisico};
         console.log(idEliminar);
@@ -242,7 +245,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
             llenarTabla();
         });
     }
-    
+
     //FUNCION PARA ELIMINAR CALIFICACION
     $scope.listarCalifeliminar = function (IdValor) {
         console.log(idEliminar);

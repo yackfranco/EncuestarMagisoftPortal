@@ -2,7 +2,9 @@ angular.module('Calificadores').controller('configusuariosController', InitContr
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage'];
 function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage) {
     
-    
+     $scope.botonconfig = "botonescontorno";
+    $scope.botonconfigtxt = "botonestxt";
+    $scope.botonconfigfa = "botonesfa";
     if($LocalStorage.usuarioguardado != undefined){
         if($LocalStorage.rolguardado == "ADMINISTRADOR"){
             $state.go('configusuarios');

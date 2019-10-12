@@ -3,64 +3,58 @@
             <p class="nombreusuarioadmin">{{nombrecompletoadmin}}</p>
     </div>
     <div class="contenedorbotones">
-        <div class="botonesconte" ng-click="ClicItem('calificaciones')" >
+        <div class="botonesconte {{botoncalif}}" ng-click="ClicItem('calificaciones')" >
             <div class="fontboton">
-                <button title="Calificaciones" type="button"
-                class="btn btn-dark dropdown-item botonesnav1"><i class="fa fa-check-square "
-                style="font-size: 40px"></i></button>
-                
+                <i class="fa fa-check-square faicon {{botoncaliffa}}" style="font-size: 40px"></i>
             </div>
             <div class="fonttext">
-            <P class="nombretext">Inicio</P>
+            <P class="nombretext {{botoncaliftxt}}">Inicio</P>
             </div>
         </div>
-        <div class="botonesconte" ng-click="ClicItem('usuario')">
+        <div class="botonesconte {{botonusuarios}}" ng-click="ClicItem('usuario')">
             <div class="fontboton">
-                <button  title="Usuarios" type="button"
-                class="btn btn-dark dropdown-item botonesnav1"><i class="fa fa-group" style="font-size:40px"></i></button>
+                <i class="fa fa-group faicon {{botonusuariosfa}}" style="font-size:40px"></i>
             </div>
             <div class="fonttext">
-                <P class="nombretext">Usuarios</P>
+                <P class="nombretext {{botonusuariostxt}}">Usuarios</P>
             </div>
         </div>
-        <div class="botonesconte" ng-click="ClicItem('configusuarios')">
+        <div class="botonesconte {{botonconfig}}" ng-click="ClicItem('configusuarios')">
             <div class="fontboton">
-                <button  title="Config. Usuarios" type="button"
-                class="btn btn-dark dropdown-item botonesnav1"><i class="fa fa-gears" style="font-size:40px"></i></button>
+                <i class="fa fa-gears faicon {{botonconfigfa}}" style="font-size:40px"></i>
             </div>
             <div class="fonttext">
-                <P class="nombretext">Ajustes</P>
+                <P class="nombretext {{botonconfigtxt}}">Ajustes</P>
             </div>
         </div>
-        <div class="botonesconte" ng-click="ClicItem('sedes')">
+        <div class="botonesconte {{botonsede}}" ng-click="ClicItem('sedes')">
             <div class="fontboton">
-                <button  title="Sedes" type="button"
-                class="btn btn-dark dropdown-item botonesnav1"><i class="fa fa-institution" style="font-size:40px"></i></button>
+                <i class="fa fa-institution faicon {{botonsedefa}}" style="font-size:40px"></i>
             </div>
             <div class="fonttext">
-                <P class="nombretext">Ciudad</P>
+                <P class="nombretext {{botonsedetxt}}">Ciudad</P>
             </div>
         </div>
-        <div class="botonesconte" ng-click="ClicItem('paquete')">
+        <div class="botonesconte {{botonpregunta}}" ng-click="ClicItem('paquete')">
             <div class="fontboton">
-                <button  title="Preguntas" type="button"
-                class="btn btn-dark dropdown-item botonesnav1"><i class="fa fa-question-circle" style="font-size:40px"></i></button>
+                <i class="fa fa-question-circle faicon {{botonpreguntafa}}" style="font-size:40px"></i>
             </div>
             <div class="fonttext">
-                <P class="nombretext">Preguntas</P>
+                <P class="nombretext {{botonpreguntatxt}}">Preguntas</P>
             </div>
         </div>
-        <div class="botonesconte" ng-click="ClicItem('reportes')" >
-            <div class="fontboton">
-                <button title="Reportes" type="button"
-                class="btn btn-dark dropdown-item botonesnav1"><i class="fa fa-file-text" style="font-size:40px"></i></button>
+        <div class="botonesconte {{botonreporte}} ultimobotonconte" ng-click="ClicItem('reportes')" >
+            <div class="fontboton ">
+                <i class="fa fa-file-text faicon {{botonreportefa}}" style="font-size:40px"></i>
             </div>
             <div class="fonttext">
-                <P class="nombretext">Reportes</P>
+                <P class="nombretext {{botonreportetxt}}">Reportes</P>
             </div>
         </div>
     </div>
     <div class="contenedorlogo">
-        <p class="urlnavegacion">www.magiturno.com</p>
+        <div class="contenedorlogo1">
+            
+        </div>
     </div>
 </div>

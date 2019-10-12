@@ -1,175 +1,88 @@
 /*CONTENEDOR DE USUARIO*/
 .contenedorsedes{
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	background-color: #D5D5D5;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #D5D5D5;
 }
 
 .sedes1{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 8%;
-	margin: 2px;
-	background-color: white;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-	padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 8%;
+    /* margin: 2px; */
+    background-color: #C4C5CA;
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    padding: 1%; */
 }
 
 .titulosedes{
-	margin-bottom: 0px;
-	color: #3B3B3B;
+    margin-bottom: 0px;
+    color: black;
 }
 
 .sedes2{
-	display: flex;
-	flex-direction: row;
-	height: 34%;
-	margin: 1px;
-	padding: 5px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
+    display: flex;
+    flex-direction: row;
+    height: 34%;
+    /* margin: 1px; */
+    padding: 5px;
+    background-color: white;
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px; */
 }
+
 .sedes3{
-	display: flex;
-	flex-direction: row;
-	height: 50%;
-	margin: 1px;
-	padding: 5px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    /* margin: 1px; */
+    padding: 5px;
+    background-color: white;
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px; */
 }
 
 .sedes2left{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	width: 50%;
-	
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
 }
 
 .labelsedes{
-	font-size: 20px;
-	color: white;
+    font-size: 20px;
+    color: black;
 }
 
 .botoncrearsede{
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .sedes2right{
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	width: 50%;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    /* background-color: #3B3B3B; */
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px; */
 }
 
 .grupoinputssedep{
-	
-	width: 60%;
+    width: 60%;
 }
 
 .grupoinputssede{
-	
-	width: 60%;
-}
-/*
-.tablascrollsedes{
-	overflow-y:auto;
-	margin:0; 
-}
-.tablasede td{
- padding: 5px;
-}
 
-.sedes3{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 6%;
-	margin: 2px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-	padding: 1%;
-}
-
-.sedes4{
-	display: flex;
-	flex-direction: column;
-	height: 62%;
-	margin: 1px;
-	padding: 5px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-}
-
-.sedes4arriba{
-	display: flex;
-	flex-direction: row;
-	height: 45%;
-	width: 100%;
-}
-
-.sedes4arribaleft{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	width: 50%;
-}
-
-.sedes4arribaright{
-	height: 100%;
-	width: 50%;
-	display: flex;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-}
-
-
-.sedes4abajo{
-	display: flex;
-	flex-direction: row;
-	height: 65%;
-	width: 100%;
-	padding-top: 0.2%;
-	
-}
-
-.sedes4abajoleft{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 50%;
-	height: 100%;
-
-}
-
-.sedes4abajoright{
-	width: 50%;
-	height: 100%;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
+    width: 60%;
 }

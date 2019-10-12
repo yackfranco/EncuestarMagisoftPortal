@@ -1,7 +1,9 @@
 angular.module('Calificadores').controller('adminController', InitController);
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$interval'];
 function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $interval) {
-
+$scope.botoncalif = "botonescontorno";
+    $scope.botoncaliftxt = "botonestxt";
+    $scope.botoncaliffa = "botonesfa";
     console.log("prueba");
 
     if ($LocalStorage.usuarioguardado != undefined) {

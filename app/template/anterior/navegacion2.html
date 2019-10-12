@@ -1,19 +1,22 @@
+
+<div class="datoarribaadmin">
+    <!-- <h4>{{nombrecompletoadmin}}</h4> -->
+</div>
 <div class="logoarribadmin">
     <div class="logoencuestar">
+
     </div>
-</div>
-<div class="datoarribaadmin">
 </div>
 <div class="monitor">
     <button type="button" data-toggle="tooltip" data-placement="bottom" title="Monitorear Usuarios" ng-click="VerUsuarios()" style="margin-right: 10px;" class="btn btn-primary botonsaliradmin1 "><i class="fa fa-desktop" style="font-size:24px; color: #444545;"></i></button>     
 </div>
-
 <div class="cerrararribaadmin">
-    <button type="button"  class="btn btn-danger botonsaliradmin" data-toggle="modal" data-target="#cerrarsesion">Cerrar sesión</button>
+    <button type="button" ng-click="cerrarSesion()" class="btn btn-danger botonsaliradmin">Cerrar sesión</button>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" data-backdrop="static" data-keyboard="false" id="ModalVerUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-target=".bd-example-modal-lg">
+    <!--<div class="modal-dialog" role="document">-->
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content modal" style="HEIGHT: 550PX;">
             <div class="modal-header modalreporteusuarios">
@@ -30,8 +33,8 @@
                 </div>
                 <button ng-click="ReporteMonitorearUsuario()" title="ASCII" type="button"
                         class="btn btn-dark botonReporteMonitorearUsuario"><i class="fa fa fa-file-excel-o"
-                        style="font-size:30px; color: white"></i>
-                    <p style="color: white">EXCEL</p>
+                                                                                      style="font-size:30px; color: white"></i>
+                    <p  style="color: white">EXCEL</p>
                 </button>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalVerUsuarios()">
                     <span aria-hidden="true">&times;</span>
@@ -60,13 +63,14 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 </div>
 
 <!--MODAL PARA DESCARGAR REPORTES-->
 <div data-backdrop="static" data-keyboard="false" class="modal fade bd-example-modal-lg" id="modalDescarga"
-     tabindex="-1" role="dialog" aria-labelledby="modalDescarga" aria-hidden="true">
+    tabindex="-1" role="dialog" aria-labelledby="modalDescarga" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header modalfondo">
@@ -78,30 +82,8 @@
             <h5 class="modal-title ">DESCARGAR</h5>
             <div class="modal-body centrarBotonDescarga">
                 <a class="btn btnDescargar btn-success " ng-show="MostrarDescarga" href="{{linkdescarga}}" download><img
-                   src="image/la-computacion-en-nube.png" class="iconoReporteDescarga" alt="" /></a>
+                        src="image/la-computacion-en-nube.png" class="iconoReporteDescarga" alt="" /></a>
             </div>
         </div>
     </div>
 </div>
-
- <!--MODAL PARA CERRAR SESION-->   
-<div class="modal fade" id="cerrarsesion">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header modalfondo">
-                <h4 class="modal-title">Cerrar Sesión</h4>
-                <button type="button" class="close modalx" data-dismiss="modal">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                ¿ Desea Salir Del Sistema ?
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cerrarSesion()">Salir</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div> 

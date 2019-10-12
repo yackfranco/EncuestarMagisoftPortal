@@ -1,7 +1,10 @@
 angular.module('Calificadores').controller('EmpresasController', InitController);
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$interval', '$localStorage'];
 function InitController($scope, $state, $sessionStorage, servicios, $interval, $LocalStorage) {
-
+    $scope.botonEmpresa = "botonescontorno";
+    $scope.botonEmpresatxt = "botonestxt";
+    $scope.botonEmpresafa = "botonesfa";
+    
     if ($LocalStorage.usuarioguardado != undefined) {
         if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
             $state.go('Empresas');
@@ -47,7 +50,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
     }
 
     //FUNCION PARA LLAMAR A LA MODAL
-   function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+    function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
             title: titulo,
             text: mensaje

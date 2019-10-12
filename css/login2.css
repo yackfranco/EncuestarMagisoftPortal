@@ -1,46 +1,46 @@
 .textbox{
-     border:0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  text-align: center;
-  border: 2px solid #bb0d0d;
-  padding: 14px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  transition: 0.25s;
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #bb0d0d;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
 }
 .botonRecuperarContra {
-  width: 300px;
-  height: 80px;
-  background: dodgerblue;
-  border-radius: 6px;
-  transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+    width: 300px;
+    height: 80px;
+    background: dodgerblue;
+    border-radius: 6px;
+    transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
 }
 
 .botonRecuperarContra svg {
-  transform: rotate(180deg);
-  transition: all .5s;
+    transform: rotate(180deg);
+    transition: all .5s;
 }
 
 .botonRecuperarContra__circle {
-  width: 120px;
-  height: 120px;
-  background: mediumseagreen;
-  border-radius: 50%;
-  transform: rotate(-180deg);
+    width: 120px;
+    height: 120px;
+    background: mediumseagreen;
+    border-radius: 50%;
+    transform: rotate(-180deg);
 }
 
 .botonRecuperarContra:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .tick {
-  color: white;
-  font-size: 2em;
-  transition: all .9s;
+    color: white;
+    font-size: 2em;
+    transition: all .9s;
 }
 
 #login{
@@ -87,7 +87,7 @@
 }
 .recuperarContra{
     margin: 20px;
-    
+
 }
 .rc{
     cursor: pointer;
@@ -117,59 +117,49 @@
     color: rgba(188,188,188,0.5);
     opacity: 1; /* Firefox */
 }
-/*
-#entrar{	
-  
-    padding: 10px 30px 10px 30px;
-    border-radius: 25px;
-    background: rgba(174,32,240,1);
-background: -moz-linear-gradient(top, rgba(174,32,240,1) 0%, rgba(120,10,246,1) 68%, rgba(120,10,246,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(174,32,240,1)), color-stop(68%, rgba(120,10,246,1)), color-stop(100%, rgba(120,10,246,1)));
-background: -webkit-linear-gradient(top, rgba(174,32,240,1) 0%, rgba(120,10,246,1) 68%, rgba(120,10,246,1) 100%);
-background: -o-linear-gradient(top, rgba(174,32,240,1) 0%, rgba(120,10,246,1) 68%, rgba(120,10,246,1) 100%);
-background: -ms-linear-gradient(top, rgba(174,32,240,1) 0%, rgba(120,10,246,1) 68%, rgba(120,10,246,1) 100%);
-background: linear-gradient(to bottom, rgba(174,32,240,1) 0%, rgba(120,10,246,1) 68%, rgba(120,10,246,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ae20f0', endColorstr='#780af6', GradientType=0 );
 
-    -webkit-box-shadow: 10px 10px 22px 1px rgba(0,0,0,0.27);
-    -moz-box-shadow: 10px 10px 22px 1px rgba(0,0,0,0.27);
-    box-shadow: 10px 10px 22px 1px rgba(0,0,0,0.27);
-    color: white;
-}*/
+#entrar{	
+    background-color: #444545;
+    border-color: #444545;
+}
 
 #imagen{
-    
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
-    
+
     background-size: 100% 100%;
     border-radius: 25px;
 }
 #imagen{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-	background-image: url('../image/login.png');
-	background-repeat: none;
-	background-size: 100% 100%;
-  padding: 10px 30px 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../image/login.png');
+    background-repeat: none;
+    background-size: 100% 100%;
+    padding: 10px 30px 10px 30px;
 
 }
 .fondologin1{
-  background-color: #3B3B3B;
+    background-color: #3B3B3B;
 }
 
 .logologin{
-  width: 80%;
-  height: 30%;
-  /*background-color: #bb0d0d;*/
-  background-image: url('../image/encuestar.png');
-	background-repeat: none;
-	background-size: 100% 100%;
-  padding: 10px 30px 10px 30px;
+    width: 80%;
+    height: 30%;
+    /*background-color: #bb0d0d;*/
+    background-image: url('../image/encuestar.png');
+    background-repeat: none;
+    background-size: 100% 100%;
+    padding: 10px 30px 10px 30px;
+}
+
+.fondologin1 {
+    background-color: #9D9EA1;
 }

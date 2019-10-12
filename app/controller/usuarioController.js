@@ -1,7 +1,10 @@
 angular.module('Calificadores').controller('usuarioController', InitController);
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$interval', '$localStorage'];
 function InitController($scope, $state, $sessionStorage, servicios, $interval, $LocalStorage) {
-
+    $scope.botonusuarios = "botonescontorno";
+    $scope.botonusuariostxt = "botonestxt";
+    $scope.botonusuariosfa = "botonesfa";
+    
     if ($LocalStorage.usuarioguardado != undefined) {
         if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
             $state.go('usuario');
@@ -27,7 +30,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
             $scope.usuario = response.data;
         });
     }
- 
+
     //rutina para validar que solo ingresen letras
     function validarSoloLetra(string) {
         if (string.includes("#") || string.includes("$") || string.includes("´"))

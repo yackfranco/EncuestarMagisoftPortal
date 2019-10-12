@@ -4,10 +4,6 @@
 </div>
 <div class="datoarribaadmin">
 </div>
-<div class="monitor">
-    <button type="button" data-toggle="tooltip" data-placement="bottom" title="Monitorear Usuarios" ng-click="VerUsuarios()" style="margin-right: 10px;" class="btn btn-primary botonsaliradmin1 "><i class="fa fa-desktop" style="font-size:24px; color: #444545;"></i></button>     
-</div>
-
 <div class="cerrararribaadmin">
     <button type="button"  class="btn btn-danger botonsaliradmin" data-toggle="modal" data-target="#cerrarsesion">Cerrar sesión</button>
 </div>
@@ -59,26 +55,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--MODAL PARA DESCARGAR REPORTES-->
-<div data-backdrop="static" data-keyboard="false" class="modal fade bd-example-modal-lg" id="modalDescarga"
-     tabindex="-1" role="dialog" aria-labelledby="modalDescarga" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header modalfondo">
-                <h5 class="modal-title">Reporte Generado Exitosamente</h5>
-                <button type="button" class="close modalx" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <h5 class="modal-title ">DESCARGAR</h5>
-            <div class="modal-body centrarBotonDescarga">
-                <a class="btn btnDescargar btn-success " ng-show="MostrarDescarga" href="{{linkdescarga}}" download><img
-                   src="image/la-computacion-en-nube.png" class="iconoReporteDescarga" alt="" /></a>
             </div>
         </div>
     </div>

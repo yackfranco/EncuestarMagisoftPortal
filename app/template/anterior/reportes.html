@@ -1,0 +1,219 @@
+<div class="contenedoradmin" style="height: 100vh; width: 100vw;">
+
+    <div class="contenedoradmin1">
+        <div class="contenedoradminnavegacion" ng-include="'app/template/adminnavegacion.html'">
+
+        </div>
+        <div class="contenedoradmininterfaces">
+        <div class="contenedorarriba">
+            <div class="contenedorarriba1" ng-include="'app/template/navegacion.html'">
+            </div>
+        </div>
+        <div class="contenedorinterfaces">
+            <div class="contenedorreportes">
+                <!-- <div class="reportes1">
+                    <h2 class="tituloreportes">REPORTE GENERAL</h2>
+                </div>
+                <div class="reportes2">
+                    <div class="reportes2left">
+                        <div class="reporte2leftarriba">
+                            <div class="reporte2leftarriba1">
+                                <label class="labelreporte">Fecha Inicial</label>
+                                <input
+                                    class="grupoinputsreportefecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                    type="date" ng-change="gfechainicial(generalfechainicial)"
+                                    ng-model="generalfechainicial">
+                                <label class="labelreporte">Ciudad</label>
+                                <select class="form-control grupoinputsreporte" ng-change="gciudad(idciudad)"
+                                    ng-model="idciudad">
+                                    <option></option>
+                                    <option ng-repeat="ciudades in listaciudad" value="{{ciudades.IdCiudad}}">
+                                        {{ciudades.NombreCiudad}}</option>
+                                </select>
+                            </div>
+                            <div class="reporte2leftarriba2">
+                                <label class="labelreporte">Fecha Final</label>
+                                <input
+                                    class="grupoinputsreportefecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                    type="date" ng-change="gfechafinal(generalfechafinal)" ng-model="generalfechafinal">
+                                <label class="labelreporte">Sede</label>
+                                <select class="form-control grupoinputsreporte" ng-change="gsede(IdSede)"
+                                    ng-model="IdSede">
+                                    <option></option>
+                                    <option ng-repeat="sedes in listasede" value="{{sedes.IdSede}}">{{sedes.NombreSede}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="reporte2leftabajo">
+                            <label class="labelreporte">Usuario</label>
+                            <select class="form-control grupoinputsreporte1" ng-change="gusuario(IdUsuario)"
+                                ng-model="IdUsuario">
+                                <option></option>
+                                <option ng-repeat="usuarios in listausuario" value="{{usuarios.IdUsuario}}">
+                                    {{usuarios.NombreUsuario}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="reportes2right">
+                        <div class="botonesreportes">
+                            <div class="botonesreportes1">
+                                    <button ng-click="reporteexcelgeneral()" title="Reportes" type="button" class="btn btn-dark"><i class="fa fa-file-excel-o" style="font-size:45px; color: green"></i></button>
+                                    <button ng-click="reportePDFgeneral()" title="Reportes" type="button" class="btn btn-dark"><i class="fa fa-file-powerpoint-o" style="font-size:45px; color: red"></i></button>
+                            </div>
+                            <div class="botonesreportes2">
+                                    <button ng-click="ClicItem('reportes')" title="Reportes" type="button" class="btn btn-dark"><i class="fa fa-file-code-o" style="font-size:45px; color: orangered"></i></button>
+                                    <button ng-click="ClicItem('reportes')" title="Reportes" type="button" class="btn btn-dark"><i class="fa fa-file-text-o" style="font-size:45px; color: skyblue"></i></button>
+                            </div>
+                                
+                        </div>
+                       
+                    </div>
+                   
+                    </div> 
+                </div> -->
+                <div class="reportes1">
+                    <h2 class="tituloreportes">REPORTES</h2>
+                </div>
+                <div class="reportes3">
+                    <div class="reportes3left">
+                        <div class="reporte3leftarriba">
+                            <div class="reporte3leftarriba1">
+                                <label class="labelreporte">Fecha Inicial</label>
+                                <input
+                                    class="grupoinputsreportefecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                    type="date" ng-change="dfechainicial(detallefechainicial)"
+                                    ng-model="detallefechainicial">
+                                <label class="labelreporte">Ciudad</label>
+                                <select class="form-control grupoinputsreporte" ng-change="dciudad(deidciudad)"
+                                    ng-model="deidciudad">
+                                    <option></option>
+                                    <option ng-repeat="ciudades in listaciudad" value="{{ciudades.IdCiudad}}">
+                                        {{ciudades.NombreCiudad}}</option>
+                                </select>
+                                <label class="labelreporte">Usuario</label>
+                                <select class="form-control grupoinputsreporte1detalle"
+                                    ng-change="dusuario(deIdUsuario)" ng-model="deIdUsuario">
+                                    <option></option>
+                                    <option ng-repeat="usuarios in listausuario" value="{{usuarios.IdUsuario}}">
+                                        {{usuarios.NombreUsuario}}</option>
+                                </select>
+                            </div>
+                            <div class="reporte3leftarriba2">
+                                <label class="labelreporte">Fecha Final</label>
+                                <input
+                                    class="grupoinputsreportefecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                    type="date" ng-change="dfechafinal(detallefechafinal)" ng-model="detallefechafinal">
+                                <label class="labelreporte">Sede</label>
+                                <select class="form-control grupoinputsreporte" ng-change="dsede(deIdSede)"
+                                    ng-model="deIdSede">
+                                    <option></option>
+                                    <option ng-repeat="sedes in listaseded" value="{{sedes.IdSede}}">
+                                        {{sedes.NombreSede}}</option>
+                                </select>
+                                <label class="labelreporte">Pregunta</label>
+                                <select class="form-control grupoinputsreporte1detalle"
+                                    ng-change="dpregunta(deIdPregunta)" ng-model="deIdPregunta">
+                                    <option ng-repeat="preguntas in listarpregunta" value="{{preguntas.IdPregunta}}">
+                                        {{preguntas.Pregunta}}</option>
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- <div class="reporte3leftabajodetalle">
+                            <div class="reporte3leftabajodetalle1">
+                                <label class="labelreporte">Usuario</label>
+                                <select class="form-control grupoinputsreporte1detalle"
+                                    ng-change="dusuario(deIdUsuario)" ng-model="deIdUsuario">
+                                    <option></option>
+                                    <option ng-repeat="usuarios in listausuario" value="{{usuarios.IdUsuario}}">
+                                        {{usuarios.NombreUsuario}}</option>
+                                </select>
+                            </div>
+                            <div class="reporte3leftabajodetalle2">
+                                <label class="labelreporte">Pregunta</label>
+                                <select class="form-control grupoinputsreporte1detalle"
+                                    ng-change="dpregunta(deIdPregunta)" ng-model="deIdPregunta">
+                                    <option ng-repeat="preguntas in listarpregunta" value="{{preguntas.IdPregunta}}">
+                                        {{preguntas.Pregunta}}</option>
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                         -->
+                    </div>
+                    <div class="reportes3right table-responsive tablascrollsedes">
+                        <div class="botonesreportes">
+                            <div class="botonesreportes1">
+                                <div>
+                                <button ng-click="reporteexcelgeneralDetallado()" title="Excel" type="button"
+                                    class="btn btn-dark botonesreportestype botonesreportestypecolor1"><i class="fa fa-file-excel-o"
+                                    style="font-size:45px; color: white"></i>
+                                    <p style="color: white">Excel</p>
+                                </button>                                    
+                                </div>
+                                <div>
+                                <button ng-click="reporteexcelgeneralDetalladoPDF()" title="PDF" type="button"
+                                    class="btn btn-dark botonesreportestype botonesreportestypecolor2"><i class="fa fa-file-powerpoint-o"
+                                        style="font-size:45px; color: white"></i>
+                                    <p  style="color: white">PDF</p>
+                                </button>
+                                </div>
+                                <div>
+                                <button ng-click="reportegeneralDetalladoHTML()" title="HTML" type="button"
+                                    class="btn btn-dark botonesreportestype botonesreportestypecolor3"><i class="fa fa-file-code-o"
+                                        style="font-size:45px; color: white"></i>                        
+                                    <p  style="color: white">HTML</p>
+                                </button>
+                                </div>
+                                <div>
+                                <button ng-click="reportegeneralDetalladoCSV()" title="ASCII" type="button"
+                                    class="btn btn-dark botonesreportestype botonesreportestypecolor4"><i class="fa fa-file-text-o"
+                                        style="font-size:45px; color: white"></i>
+                                    <p  style="color: white">ASCII</p>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <button ng-click="reporteexcelgeneralDetallado()">Reporte General</button>
+                        <button ng-click="reporteexcelgeneralDetalladoPDF()">Reporte General PDF</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!--MODAL PARA CONTROLAR SEDE-->
+<div class="modal fade" id="btnreportes">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{mensaje}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL PARA DESCARGAR REPORTES-->
+<div data-backdrop="static" data-keyboard="false" class="modal fade bd-example-modal-lg" id="modalDescarga"
+    tabindex="-1" role="dialog" aria-labelledby="modalDescarga" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reporte Generado Exitosamente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <h5 class="modal-title ">DESCARGAR</h5>
+            <div class="modal-body centrarBotonDescarga">
+                <a class="btn btnDescargar btn-success " ng-show="MostrarDescarga" href="{{linkdescarga}}" download><img
+                        src="image/la-computacion-en-nube.png" class="iconoReporteDescarga" alt="" /></a>
+            </div>
+        </div>
+    </div>
+</div>

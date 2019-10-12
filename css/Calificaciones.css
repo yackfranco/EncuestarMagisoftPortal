@@ -1,26 +1,26 @@
 .contenedorcalificaciones{
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	background-color: #D5D5D5;
-	/*border: 1px solid black;
-	/*border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #D5D5D5;
+    /*border: 1px solid black;
+    /*border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;*/
 }
 
 .calificaciones1{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 20%;
-	margin: 2px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-	padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20%;
+    /* margin: 2px; */
+    background-color: #D5D5D5;
+    /* border-radius: 8px 8px 8px 8px; */
+    /* -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    padding: 1%; */
 }
 
 .titulocalifi{
@@ -28,75 +28,85 @@
 }
 
 .calificaciones2{
-	/*overflow-y:scroll;
-	overflow-x: hidden;*/
-	display: flex;
-	height: 55%;
-	margin: 1px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
+    /*overflow-y:scroll;
+    overflow-x: hidden;*/
+    display: flex;
+    height: 55%;
+    /* margin: 1px; */
+    background-color: white;
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px; */
 }
+
 .tablascrollcalifi{
-	overflow-y:scroll;
-	margin:0; 
+    overflow-y:scroll;
+    margin:0; 
 }
 
 .calificaciones3{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 30%;
-	margin: 1px;
-	background-color: #3B3B3B;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 25%;
+    /* margin: 1px; */
+    background-color: #D5D5D5;
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px; */
 }
 
-
+.datoscalifi2{
+    color: black;
+    font-weight: bold;
+}
 
 .datoscalifi{
-	color: white;
+    color: black;
+
 }
+
 .datoscalifi1{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	flex-direction: row;
-	color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
+    color: black;
+    /*font-stretch: bold; */
 }
 
 .califiex{
-	color: black;
-	height: 30px;
-	width: 30px;
-	padding-top: 2px;
-	padding-right: 1px;
-	background-color: green;
+    color: black;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
+    padding-right: 1px;
+    background-color: green;
 }
+
 .califibu{
-	color: black;
-	height: 30px;
-	width: 30px;
-	padding-top: 2px;
-	padding-right: 1px;
-	background-color: #D6EAF8;
+    color: black;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
+    padding-right: 1px;
+    background-color: #D6EAF8;
 }
+
 .califire{
-	color: black;
-	height: 30px;
-	width: 30px;
-	padding-top: 2px;
-	padding-right: 1px;
-	background-color: yellow;
+    color: black;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
+    padding-right: 1px;
+    background-color: yellow;
 }
+
 .califima{
-	color: black;
-	height: 30px;
-	width: 30px;
-	padding-top: 2px;
-	padding-right: 1px;
-	background-color: red;
+    color: black;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
+    padding-right: 1px;
+    background-color: red;
 }

@@ -1,7 +1,9 @@
 angular.module('Calificadores').controller('sedesController', InitController);
-InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage'];
-function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage) {
-    
+InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage','$interval'];
+function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage,$interval) {
+    $scope.botonsede = "botonescontorno";
+    $scope.botonsedetxt = "botonestxt";
+    $scope.botonsedefa = "botonesfa";
     if($LocalStorage.usuarioguardado != undefined){
         if($LocalStorage.rolguardado == "ADMINISTRADOR"){
             $state.go('sedes');

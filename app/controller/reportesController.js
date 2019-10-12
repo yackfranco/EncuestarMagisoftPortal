@@ -1,7 +1,9 @@
 angular.module('Calificadores').controller('reportesController', InitController);
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$http', 'urlBase'];
 function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $http, $urlBase) {
-
+    $scope.botonreporte = "botonescontorno";
+    $scope.botonreportetxt = "botonestxt";
+    $scope.botonreportefa = "botonesfa";
     if ($LocalStorage.usuarioguardado != undefined) {
         if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
             $state.go('reportes');
@@ -42,8 +44,8 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     function convertDatePickerTimeToMySQLTime(str) {
         var month, day, year, hours, minutes, seconds;
         var date = new Date(str),
-            month = ("0" + (date.getMonth() + 1)).slice(-2),
-            day = ("0" + date.getDate()).slice(-2);
+                month = ("0" + (date.getMonth() + 1)).slice(-2),
+                day = ("0" + date.getDate()).slice(-2);
         // hours = ("0" + date.getHours()).slice(-2);
         // minutes = ("0" + date.getMinutes()).slice(-2);
         // seconds = ("0" + date.getSeconds()).slice(-2);
@@ -57,7 +59,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     /*TRAER DATOS PARA REPORTES*/
     listarciudades();
     function listarciudades() {
-        datos = { accion: "listarciudades", IdEmpresa: $LocalStorage.IdEmpresa };
+        datos = {accion: "listarciudades", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.reporte(datos).then(function success(response) {
             console.log(response);
             $scope.listaciudad = response.data;
@@ -67,7 +69,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
 
     function listarsedes(idciudad) {
 
-        datos = { accion: "listarsedes", idciudad: idciudad };
+        datos = {accion: "listarsedes", idciudad: idciudad};
         servicios.reporte(datos).then(function success(response) {
             console.log(response);
             $scope.listasede = response.data;
@@ -75,7 +77,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     }
 
     function listarsedesd(idciudad) {
-        datos = { accion: "listarsedes", idciudad: idciudad };
+        datos = {accion: "listarsedes", idciudad: idciudad};
         servicios.reporte(datos).then(function success(response) {
             console.log(response);
             $scope.listaseded = response.data;
@@ -84,7 +86,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
 
     listarusuarios();
     function listarusuarios() {
-        datos = { accion: "listarusuarios", IdEmpresa: $LocalStorage.IdEmpresa };
+        datos = {accion: "listarusuarios", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.reporte(datos).then(function success(response) {
             console.log(response);
             $scope.listausuario = response.data;
@@ -93,7 +95,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
 
     listarpreguntas();
     function listarpreguntas() {
-        datos = { accion: "listarpreguntas" , IdEmpresa: $LocalStorage.IdEmpresa };
+        datos = {accion: "listarpreguntas", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.reporte(datos).then(function success(response) {
             console.log(response);
             $scope.listarpregunta = response.data;
@@ -103,7 +105,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     var fechamysql = "";
     fechaactual();
     function fechaactual() {
-        datos = { accion: "fechaactual" };
+        datos = {accion: "fechaactual"};
         servicios.reporte(datos).then(function success(response) {
             fechamysql = response.data;
         });
@@ -169,32 +171,32 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (gfechafinal == "") {
 
                 $scope.reporteexcelgeneral = function () {
-                    $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario+ "& IdEmpresa"+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            /*
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                                $scope.descargarReporteExcel = true;
-                            }*/
-                        });
+                    $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                            .then(function (response) {
+                                /*
+                                 if (response.data.respuesta == "Enviado Correctamente") {
+                                 $('#modalDescarga').modal('show');
+                                 $scope.MostrarDescarga = true;
+                                 $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                                 $scope.descargarReporteExcel = true;
+                                 }*/
+                            });
                 };
             } else {
                 if (gfechainicial > gfechafinal) {
                     mensajemodal("El Rango De Fechas No Es Valido");
                 } else {
                     $scope.reporteexcelgeneral = function () {
-                        $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario+ "& IdEmpresa"+$LocalStorage.IdEmpresa)
-                            .then(function (response) {
-                                /*
-                                if (response.data.respuesta == "Enviado Correctamente") {
-                                    $('#modalDescarga').modal('show');
-                                    $scope.MostrarDescarga = true;
-                                    $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                                    $scope.descargarReporteExcel = true;
-                                }*/
-                            });
+                        $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    /*
+                                     if (response.data.respuesta == "Enviado Correctamente") {
+                                     $('#modalDescarga').modal('show');
+                                     $scope.MostrarDescarga = true;
+                                     $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                                     $scope.descargarReporteExcel = true;
+                                     }*/
+                                });
                     };
                 }
             }
@@ -210,32 +212,32 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (gfechafinal == "") {
 
                 $scope.reportePDFgeneral = function () {
-                    $http.get($urlBase + "ReporteGeneralPDF.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario+ "& IdEmpresa"+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            /*
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                                $scope.descargarReporteExcel = true;
-                            }*/
-                        });
+                    $http.get($urlBase + "ReporteGeneralPDF.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                            .then(function (response) {
+                                /*
+                                 if (response.data.respuesta == "Enviado Correctamente") {
+                                 $('#modalDescarga').modal('show');
+                                 $scope.MostrarDescarga = true;
+                                 $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                                 $scope.descargarReporteExcel = true;
+                                 }*/
+                            });
                 };
             } else {
                 if (gfechainicial > gfechafinal) {
                     mensajemodal("El Rango De Fechas No Es Valido");
                 } else {
                     $scope.reportePDFgeneral = function () {
-                        $http.get($urlBase + "ReporteGeneralPDF.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario+ "& IdEmpresa"+$LocalStorage.IdEmpresa)
-                            .then(function (response) {
-                                /*
-                                if (response.data.respuesta == "Enviado Correctamente") {
-                                    $('#modalDescarga').modal('show');
-                                    $scope.MostrarDescarga = true;
-                                    $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                                    $scope.descargarReporteExcel = true;
-                                }*/
-                            });
+                        $http.get($urlBase + "ReporteGeneralPDF.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    /*
+                                     if (response.data.respuesta == "Enviado Correctamente") {
+                                     $('#modalDescarga').modal('show');
+                                     $scope.MostrarDescarga = true;
+                                     $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                                     $scope.descargarReporteExcel = true;
+                                     }*/
+                                });
                     };
                 }
             }
@@ -256,32 +258,32 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (gfechafinal == "") {
 
                 $scope.reporteexcelgeneralDetallado = function () {
-                    $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa"+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            /*
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                                $scope.descargarReporteExcel = true;
-                            }*/
-                        });
+                    $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                            .then(function (response) {
+                                /*
+                                 if (response.data.respuesta == "Enviado Correctamente") {
+                                 $('#modalDescarga').modal('show');
+                                 $scope.MostrarDescarga = true;
+                                 $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                                 $scope.descargarReporteExcel = true;
+                                 }*/
+                            });
                 };
             } else {
                 if (gfechainicial > gfechafinal) {
                     mensajemodal("El Rango De Fechas No Es Valido");
                 } else {
                     $scope.reporteexcelgeneralDetallado = function () {
-                        $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa"+$LocalStorage.IdEmpresa)
-                            .then(function (response) {
-                                /*
-                                if (response.data.respuesta == "Enviado Correctamente") {
-                                    $('#modalDescarga').modal('show');
-                                    $scope.MostrarDescarga = true;
-                                    $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                                    $scope.descargarReporteExcel = true;
-                                }*/
-                            });
+                        $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    /*
+                                     if (response.data.respuesta == "Enviado Correctamente") {
+                                     $('#modalDescarga').modal('show');
+                                     $scope.MostrarDescarga = true;
+                                     $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                                     $scope.descargarReporteExcel = true;
+                                     }*/
+                                });
                     };
                 }
             }
@@ -348,22 +350,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (dfechafinal == "") {
 
                 $scope.reporteexcelgeneralDetallado = function () {
-                    $http.get($urlBase + "reportegeneralDetalle.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reportes/ReporteGeneralDetalle.xlsx";
-                                $scope.descargarReporteExcel = true;
-                            }
-                        });
-                };
-            } else {
-                if (dfechainicial > dfechafinal) {
-                    mensajemodal("El Rango De Fechas No Es Valido");
-                } else {
-                    $scope.reporteexcelgeneralDetallado = function () {
-                        $http.get($urlBase + "reportegeneralDetalle.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
+                    $http.get($urlBase + "reportegeneralDetalle.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
                             .then(function (response) {
                                 if (response.data.respuesta == "Enviado Correctamente") {
                                     $('#modalDescarga').modal('show');
@@ -372,6 +359,21 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
                                     $scope.descargarReporteExcel = true;
                                 }
                             });
+                };
+            } else {
+                if (dfechainicial > dfechafinal) {
+                    mensajemodal("El Rango De Fechas No Es Valido");
+                } else {
+                    $scope.reporteexcelgeneralDetallado = function () {
+                        $http.get($urlBase + "reportegeneralDetalle.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    if (response.data.respuesta == "Enviado Correctamente") {
+                                        $('#modalDescarga').modal('show');
+                                        $scope.MostrarDescarga = true;
+                                        $scope.linkdescarga = $urlBase + "reportes/ReporteGeneralDetalle.xlsx";
+                                        $scope.descargarReporteExcel = true;
+                                    }
+                                });
                     };
                 }
             }
@@ -388,22 +390,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (dfechafinal == "") {
 
                 $scope.reporteexcelgeneralDetalladoPDF = function () {
-                    $http.get($urlBase + "ReporteGeneralDetallePDF.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reportespdf/ReporteGeneralDetalle.pdf";
-                                $scope.descargarReporteExcel = true;
-                            }
-                        });
-                };
-            } else {
-                if (dfechainicial > dfechafinal) {
-                    mensajemodal("El Rango De Fechas No Es Valido");
-                } else {
-                    $scope.reporteexcelgeneralDetalladoPDF = function () {
-                        $http.get($urlBase + "ReporteGeneralDetallePDF.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
+                    $http.get($urlBase + "ReporteGeneralDetallePDF.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
                             .then(function (response) {
                                 if (response.data.respuesta == "Enviado Correctamente") {
                                     $('#modalDescarga').modal('show');
@@ -412,6 +399,21 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
                                     $scope.descargarReporteExcel = true;
                                 }
                             });
+                };
+            } else {
+                if (dfechainicial > dfechafinal) {
+                    mensajemodal("El Rango De Fechas No Es Valido");
+                } else {
+                    $scope.reporteexcelgeneralDetalladoPDF = function () {
+                        $http.get($urlBase + "ReporteGeneralDetallePDF.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    if (response.data.respuesta == "Enviado Correctamente") {
+                                        $('#modalDescarga').modal('show');
+                                        $scope.MostrarDescarga = true;
+                                        $scope.linkdescarga = $urlBase + "reportespdf/ReporteGeneralDetalle.pdf";
+                                        $scope.descargarReporteExcel = true;
+                                    }
+                                });
                     };
                 }
             }
@@ -425,22 +427,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (dfechafinal == "") {
 
                 $scope.reportegeneralDetalladoCSV = function () {
-                    $http.get($urlBase + "ReporteDetalleCSV.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reportescsv/fichero.csv";
-                                $scope.descargarReporteExcel = true;
-                            }
-                        });
-                };
-            } else {
-                if (dfechainicial > dfechafinal) {
-                    mensajemodal("El Rango De Fechas No Es Valido");
-                } else {
-                    $scope.reportegeneralDetalladoCSV = function () {
-                        $http.get($urlBase + "ReporteDetalleCSV.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
+                    $http.get($urlBase + "ReporteDetalleCSV.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
                             .then(function (response) {
                                 if (response.data.respuesta == "Enviado Correctamente") {
                                     $('#modalDescarga').modal('show');
@@ -449,6 +436,21 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
                                     $scope.descargarReporteExcel = true;
                                 }
                             });
+                };
+            } else {
+                if (dfechainicial > dfechafinal) {
+                    mensajemodal("El Rango De Fechas No Es Valido");
+                } else {
+                    $scope.reportegeneralDetalladoCSV = function () {
+                        $http.get($urlBase + "ReporteDetalleCSV.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    if (response.data.respuesta == "Enviado Correctamente") {
+                                        $('#modalDescarga').modal('show');
+                                        $scope.MostrarDescarga = true;
+                                        $scope.linkdescarga = $urlBase + "reportescsv/fichero.csv";
+                                        $scope.descargarReporteExcel = true;
+                                    }
+                                });
                     };
                 }
             }
@@ -463,22 +465,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (dfechafinal == "") {
 
                 $scope.reportegeneralDetalladoHTML = function () {
-                    $http.get($urlBase + "ReporteDetalladoHTML.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
-                        .then(function (response) {
-                            if (response.data.respuesta == "Enviado Correctamente") {
-                                $('#modalDescarga').modal('show');
-                                $scope.MostrarDescarga = true;
-                                $scope.linkdescarga = $urlBase + "reporteshtml/Reporte.html";
-                                $scope.descargarReporteExcel = true;
-                            }
-                        });
-                };
-            } else {
-                if (dfechainicial > dfechafinal) {
-                    mensajemodal("El Rango De Fechas No Es Valido");
-                } else {
-                    $scope.reportegeneralDetalladoHTML = function () {
-                        $http.get($urlBase + "ReporteDetalladoHTML.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa="+$LocalStorage.IdEmpresa)
+                    $http.get($urlBase + "ReporteDetalladoHTML.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
                             .then(function (response) {
                                 if (response.data.respuesta == "Enviado Correctamente") {
                                     $('#modalDescarga').modal('show');
@@ -487,6 +474,21 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
                                     $scope.descargarReporteExcel = true;
                                 }
                             });
+                };
+            } else {
+                if (dfechainicial > dfechafinal) {
+                    mensajemodal("El Rango De Fechas No Es Valido");
+                } else {
+                    $scope.reportegeneralDetalladoHTML = function () {
+                        $http.get($urlBase + "ReporteDetalladoHTML.php?gfechainicial=" + dfechainicial + "& gfechafinal=" + dfechafinal + "& gidciudad=" + didciudad + "& gIdSede=" + dIdSede + "& gIdUsuario=" + dIdUsuario + "& gPregunta=" + dIdPregunta + "& IdEmpresa=" + $LocalStorage.IdEmpresa)
+                                .then(function (response) {
+                                    if (response.data.respuesta == "Enviado Correctamente") {
+                                        $('#modalDescarga').modal('show');
+                                        $scope.MostrarDescarga = true;
+                                        $scope.linkdescarga = $urlBase + "reporteshtml/Reporte.html";
+                                        $scope.descargarReporteExcel = true;
+                                    }
+                                });
                     };
                 }
             }
