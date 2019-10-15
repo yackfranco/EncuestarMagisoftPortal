@@ -90,18 +90,19 @@ if ($accion == "RecuperarContrasenalogin") {
     $contrarandom = generateRandomString();
     $correo = DevolverUnDato("select Correo from usuario where IdUsuario = $idusuario");
 
-    print_r($correo);
+//    print_r($correo);
 
     $datosnube = DevolverUnArreglo3("select * from correo");
 
-    print_r($datosnube);
+//    print_r($datosnube);
 
     foreach ($datosnube as $value) {
-        print_r($value);
+//        print_r($value);
         $CorreoNube = $value['Correo'];
         $ContraNube = $value['Contrasena'];
     }
-
+echo "correo: ".$CorreoNube;
+echo "Contrasena: ".$ContraNube;
 
     //Server settings
     $mail->SMTPDebug = 2;                                 // Enable verbose debug output

@@ -2,6 +2,18 @@
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$interval'];
 function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $interval) {
 
+    if ($LocalStorage.IdEmpresa === undefined || $LocalStorage.usuarioguardado === undefined) {
+        delete $LocalStorage.usuarioguardado;
+        delete $LocalStorage.nombrecompletoguardado;
+        delete $LocalStorage.idusuarioguardado;
+        delete $LocalStorage.cedulaguardado;
+        delete $LocalStorage.rolguardado;
+        delete $LocalStorage.IdEmpresa;
+        $state.go('login');
+    } else {
+        $state.go('admin');
+    }
+
     function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
             title: titulo,

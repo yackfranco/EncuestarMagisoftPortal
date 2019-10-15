@@ -103,22 +103,6 @@ angular.module('Calificadores').config(['$stateProvider', '$urlRouterProvider', 
                         ]);
                     }]
             }
-        }).state('asesor', {
-            url: '/asesor',
-            templateUrl: 'app/template/asesor.html',
-            controller: 'asesorController',
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                        return $ocLazyLoad.load([
-                            {
-                                serie: true,
-                                files: [
-                                    'app/controller/asesorController.js'
-                                ]
-                            }
-                        ]);
-                    }]
-            }
         }).state('empresa', {
             url: '/empresa',
             templateUrl: 'app/template/empresa.html',

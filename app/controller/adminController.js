@@ -8,21 +8,29 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
 
     if ($LocalStorage.usuarioguardado != undefined) {
         if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
-            $state.go('admin');
         } else {
             $state.go('index');
         }
     } else {
-
         $state.go('index');
     }
+    var datos = {};
+
+    function TraerkeyEmpresa() {
+        datos = {accion: "TraerKeyEmpresa", IdEmpresa: $LocalStorage.IdEmpresa};
+        servicios.admin(datos).then(function success(response) {
+            $scope.keyempresa = response.data;
+//            console.log(response.data);
+        });
+    }
+
     $scope.nombrecompletoadmin = $LocalStorage.nombrecompletoguardado;
 
     valorcalificaciones();
     fechacalifiacion();
     tablacalificaciones();
     totalcalificaciones();
-
+    TraerkeyEmpresa();
     //FUNCION PARA LLAMAR A LA MODAL
     function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
@@ -38,6 +46,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             $interval.cancel(interval);
         }, 3000);
     }
+
     function tablacalificaciones() {
         datos = {accion: "tablacalificaciones", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.admin(datos).then(function success(response) {

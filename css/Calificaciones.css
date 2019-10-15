@@ -57,8 +57,20 @@
 }
 
 .datoscalifi2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: black;
     font-weight: bold;
+}
+
+.datoscalifi21{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: black;
+    font-weight: bold;
+    margin-right: 30px;
 }
 
 .datoscalifi{

@@ -22,8 +22,8 @@
                                         <label class="labelconfigusuarios">Elegir Asesor:</label>
                                         <select class="form-control borderinput" ng-change="elegirUsuario(idusuario)" ng-model="idusuario">
                                             <option></option>
+                                            <option style="font-weight: bold" value="Todos los usuarios">*TODOS LOS USUARIOS*</option>
                                             <option ng-repeat="usu in usuarios" value="{{usu.IdUsuario}}">{{usu.NombreUsuario}}</option>
-                                            <option value="Todos los usuarios">Todos los usuarios</option>
                                         </select>
                                     </div>
                                     <div class="form-group grupoinputsconfigusuario" >
@@ -55,24 +55,24 @@
                         </div>
                         <div class="configusuarios3">
                             <div class="contenedorconfigusuarios3">
-                                <div class="contenedorconfigusuarios3right" style="border-right: solid 1px white">
+<!--                                <div class="contenedorconfigusuarios3right" style="border-right: solid 1px white">
                                     <div class="form-check-inline ">
                                         <label class="form-check-label ">
                                             <input type="checkbox" class="form-check-input check" ng-model="checkValueAsesores" style="margin-right: 14px;" ng-change="checkAllAsesores(checkValueAsesores)">Todos Los Asesores
                                         </label>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="contenedorconfigusuarios3left">
                                     <div class="form-check-inline">
                                         <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input check" ng-model="checkValue" style="margin-right: 14px;" ng-change="checkAll(checkValue)">Minimizar Ventana
+                                            <input type="checkbox" ng-disabled="bloquearCkeck" class="form-check-input check" ng-model="checkValue" style="margin-right: 14px;" ng-change="checkAll(checkValue)">Minimizar Ventana
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="configusuarios4">
-                            <button type="submit" class="btn btn-success" ng-click="submitconfigusuarios()">Guardar</button> 
+                            <button class="btn btn-success" ng-click="submitconfigusuarios()">Guardar</button> 
                         </div>
                     </div>
                 </div>

@@ -28,6 +28,11 @@ $accion = $_REQUEST["accion"];
 
 //$fecha = array('primerDia' => $primerDia, 'ultimoDia' => $ultimoDia);
 
+if ($accion == "TraerKeyEmpresa") {
+    $IdEmpresa = $_REQUEST["IdEmpresa"];
+    $validar = DevolverUnDato("select keyempresa from datosempresa where idempresa = $IdEmpresa ");
+}
+
 if ($accion == "totalcalificaciones") {
     $IdEmpresa = $_REQUEST["IdEmpresa"];
     $validar = DevolverUnDato("SELECT COUNT(*) FROM calificacion WHERE IdEmpresa = $IdEmpresa AND FechaCalif >= '$primerDia 00:00:00' and FechaCalif <= '$ultimoDia 23:59:59'");

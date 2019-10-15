@@ -9,7 +9,7 @@
         </div>
         <div class="container-fluid col-md-6 fondologin1" id="input">
             <input type="text" id="contrasena" placeholder="Usuario"
-                ng-model="usuario.usuario">
+                   ng-model="usuario.usuario">
             <input type="password" id="contrasena" placeholder="Contraseña" ng-model="usuario.contrasena">
             <div class="recuperarContra">
                 <span class="rc" ng-click="RecuperarContrasenalogin()" style="color: black">Recuperar Contraseña</span>
@@ -24,9 +24,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-            {{mensaje}}
+                {{mensaje}}
             </div>
-            
+
         </div>
     </div>
 </div> 
@@ -36,21 +36,21 @@
 <div class="modal fade" id="Recuperarcontrasenamodal">
     <div class="modal-dialog">
         <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-            <h4 class="modal-title">Recuperar Contraseña</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <!-- Modal body -->
-        <div class="modal-body">
-            ¿ Desea reestablecer su contraseña ? Tenga en cuenta que se enviará una nueva contraseña al azar.
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="aceptarrecuperarcontra()">Aceptar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-        </div>
-        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Recuperar Contraseña</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                ¿ Desea reestablecer su contraseña ? Tenga en cuenta que se enviará una nueva contraseña al azar.
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="aceptarrecuperarcontra()">Aceptar</button>
+            </div>
+
         </div>
     </div>
 </div> 

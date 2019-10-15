@@ -22,8 +22,8 @@ if ($accion == "ingresarusuario") {
     $nombreusuario = strtoupper($_REQUEST["nombreusuario"]);
     $rol = $_REQUEST["rol"];
     $contrasena = $_REQUEST["contrasena"];
-    $consultarusuario = DevolverUnDato("SELECT count(NombreUsuario) from usuario where NombreUsuario = '$nombreusuario'");
-    $validarcontraseña = DevolverUnDato("SELECT COUNT(Cedula) FROM usuario WHERE Cedula = '$cedula'");
+    $consultarusuario = DevolverUnDato("SELECT count(NombreUsuario) from usuario where NombreUsuario = '$nombreusuario' and idempresa = $IdEmpresa");
+    $validarcontraseña = DevolverUnDato("SELECT COUNT(Cedula) FROM usuario WHERE Cedula = '$cedula' and idempresa = $IdEmpresa");
     $validarpregunta = DevolverUnDato("SELECT count(*) FROM pregunta where idempresa = $IdEmpresa ");
     $pregunta = DevolverUnDato("SELECT IdPregunta FROM pregunta where idempresa = $IdEmpresa LIMIT 1");
 

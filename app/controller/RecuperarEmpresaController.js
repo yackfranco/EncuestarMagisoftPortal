@@ -6,8 +6,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
     $scope.botonRecuperarEmpresafa = "botonesfa";
     
     if ($LocalStorage.usuarioguardado != undefined) {
-        if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
-            $state.go('RecuperarEmpresa');
+        if ($LocalStorage.usuarioguardado == "ingetronik") {
         } else {
             $state.go('index');
         }

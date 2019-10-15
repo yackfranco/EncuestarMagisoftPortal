@@ -156,7 +156,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
             servicios.Empresas($scope.empresas).then(function success(response) {
                 console.log(response);
                 if (response["data"] == "invalido") {
-                    mensajemodal("El Usuario: " + $scope.empresas["nombre"] + " Ya Existe");
+                    mensajemodal("La empresa: " + $scope.empresas["nombre"] + " Ya Existe");
                 } else {
                     if (response["data"] == "Cinvalido") {
                         mensajemodal("El Nit: " + $scope.empresas["nit"] + " Ya Existe");

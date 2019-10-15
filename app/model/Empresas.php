@@ -25,8 +25,8 @@ if ($accion == "ingresarempresas") {
             $IdEmpresa = InsertDevolviendoID("INSERT INTO datosempresa (Nombre, nit, Slogan, FechaLicencia, KeyEmpresa, Estado) 
                 VALUES ('$nombre', '$nit', '$slogan', '$FechaLicencia', '$keyrandom','ACTIVO')");
 
-            hacerConsulta("INSERT INTO usuario (Cedula, NombreCompleto, Rol, Estado, NombreUsuario, Contrasena, EstadoContrasena, IdEmpresa) 
-                VALUES ('$nit', '$nombre', 'ADMINISTRADOR', 'ACTIVO', '$nit', md5($nit), 'NORMAL', $IdEmpresa)");
+                hacerConsulta("INSERT INTO usuario (Cedula, NombreCompleto, Rol, Estado, NombreUsuario, Contrasena, EstadoContrasena, IdEmpresa) 
+                VALUES ('$nit', '$nombre', 'ADMINISTRADOR', 'ACTIVO', '$nit','".md5($nit)."', 'NORMAL', $IdEmpresa)");
 
             hacerConsulta("INSERT INTO valorcalif (IdEmpresa,NumeroCalif,valorcalif) VALUES ($IdEmpresa,1,'MALO'),($IdEmpresa,2,'REGULAR'),($IdEmpresa,3,'BUENO'),($IdEmpresa,4,'EXCELENTE')");
             $validar = "valido";

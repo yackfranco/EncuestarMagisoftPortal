@@ -76,20 +76,43 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     }
 
     $scope.ReporteMonitorearUsuario = function () {
-        $http.get($urlBase + "reporteMonitorearUsuarios.php")
-                .then(function (response) {
-                    if (response.data.respuesta == "Enviado Correctamente") {
-                        $('#modalDescarga').modal('show');
-                        $scope.MostrarDescarga = true;
-                        $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
-                        $scope.descargarReporteExcel = true;
-                    }
-                });
+        swal({
+            title: "DESCARGAR REPORTE",
+            text: "por favor esperar mientras se gestiona el reporte",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }, function () {
+            $http.get($urlBase + "reporteMonitorearUsuarios.php")
+                    .then(function (response) {
+                        if (response.data.respuesta == "Enviado Correctamente") {
+                             swal.close();
+                            $('#modalDescarga').modal('show');
+                            $scope.MostrarDescarga = true;
+                            $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+                            $scope.descargarReporteExcel = true;
+
+                        }
+                    });
+//            setTimeout(function () {
+//                swal("Ajax request finished!");
+//            }, 2000);
+        });
+//        $http.get($urlBase + "reporteMonitorearUsuarios.php")
+//                .then(function (response) {
+//                    if (response.data.respuesta == "Enviado Correctamente") {
+//                        $('#modalDescarga').modal('show');
+//                        $scope.MostrarDescarga = true;
+//                        $scope.linkdescarga = $urlBase + "reportes/Reporte.xlsx";
+//                        $scope.descargarReporteExcel = true;
+//                    }
+//                });
     }
 
     VigilarLicencia();
     function VigilarLicencia() {
-        if($LocalStorage.IdEmpresa == "" || $LocalStorage.IdEmpresa== undefined){
+        if ($LocalStorage.IdEmpresa == "" || $LocalStorage.IdEmpresa == undefined) {
             return;
         }
         datos = {accion: "AvisarLicencia", IdEmpresa: $LocalStorage.IdEmpresa};

@@ -258,7 +258,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             if (gfechafinal == "") {
 
                 $scope.reporteexcelgeneralDetallado = function () {
-                    $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "& IdEmpresa" + $LocalStorage.IdEmpresa)
+                    $http.get($urlBase + "reportegeneral.php?gfechainicial=" + gfechainicial + "& gfechafinal=" + gfechafinal + "& gidciudad=" + gidciudad + "& gIdSede=" + gIdSede + "& gIdUsuario=" + gIdUsuario + "&IdEmpresa" + $LocalStorage.IdEmpresa)
                             .then(function (response) {
                                 /*
                                  if (response.data.respuesta == "Enviado Correctamente") {
