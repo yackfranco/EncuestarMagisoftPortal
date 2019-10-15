@@ -4,7 +4,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
     var datos = {};
 
     function ListarTablaVerUsuarios() {
-        datos = {accion: "registroUsuarios"};
+        datos = {accion: "registroUsuarios", IdEmpresa: $LocalStorage.IdEmpresa};
         //console.log("listarusuario")        
         servicios.usuario(datos).then(function success(response) {
             console.log(response);
@@ -71,6 +71,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
         delete $LocalStorage.idusuarioguardado;
         delete $LocalStorage.cedulaguardado;
         delete $LocalStorage.rolguardado;
+        delete $LocalStorage.IdEmpresa;
         $state.go('index');
     }
 
@@ -85,5 +86,50 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
                     }
                 });
     }
+
+    VigilarLicencia();
+    function VigilarLicencia() {
+        if($LocalStorage.IdEmpresa == "" || $LocalStorage.IdEmpresa== undefined){
+            return;
+        }
+        datos = {accion: "AvisarLicencia", IdEmpresa: $LocalStorage.IdEmpresa};
+        servicios.admin(datos).then(function success(response) {
+            console.log(response.data);
+            if (response.data == "No hay licencia") {
+                delete $LocalStorage.usuarioguardado;
+                delete $LocalStorage.nombrecompletoguardado;
+                delete $LocalStorage.idusuarioguardado;
+                delete $LocalStorage.cedulaguardado;
+                delete $LocalStorage.rolguardado;
+                delete $LocalStorage.IdEmpresa;
+                $state.go('index');
+                return;
+            }
+            if (response.data.Meses > 0 && response.data.Meses <= 3) {
+                swal({
+                    title: "Atención",
+                    text: "Su licencia expirará en " + response.data.Meses + " meses",
+                    type: "info",
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Aceptar",
+                    closeOnConfirm: false
+                });
+            } else {
+                if (response.data.Meses == 0) {
+                    swal({
+                        title: "Atención",
+                        text: "Su licencia expirará en " + response.data.Dias + " días",
+                        type: "info",
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false
+                    });
+                }
+            }
+        });
+    }
+
+
+
 
 }

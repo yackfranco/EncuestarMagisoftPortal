@@ -27,48 +27,14 @@
 .configusuarios2{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    height: 55%;
-   
-    background-color: white;
- 
-}
-.contenedorconfigusuarios2{
-    display: flex;
-    flex-direction: row;
     height: 90%;
-    width: 98%;
-    /*background-color: #D5D5D5;*/
-     justify-content: center;
-    align-content: center;
-    align-items: center;
+    /* margin: 1px; */
+    background-color: white;
+    /* border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    padding: 5px; */
 }
-
-.contenedorconfigusuarios2right{
-    display: flex;
-    height: 100%;
-    width: 45%;
-    background-color: #D5D5D5;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-.contenedorconfigusuarios2left{
-    display: flex;
-    height: 100%;
-    width: 45%;
-    background-color: #D5D5D5;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-
 
 .contenedorfromconfigusuario{
     display: flex;
@@ -133,49 +99,12 @@
 
 .configusuarios3{
     display: flex;
-    height: 20%;    
-    background-color: white;    
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-.contenedorconfigusuarios3{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    height: 90%;  
-    width: 88%;
-    background-color: #D5D5D5; 
-}
-.contenedorconfigusuarios3right{
-    display: flex;
-    height: 90%;
-    width: 88%;
-    /*background-color: #00ff00;*/ 
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-.contenedorconfigusuarios3left{
-    display: flex;
-    height: 90%;
-    width: 88%;
-    /*background-color: #f0f;*/
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-
-
-.configusuarios4{
-    display: flex;
-    height: 15%;    
-    background-color: white;  
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    height: 30%;
+    margin: 1px;
+    background-color: #3B3B3B;
+    border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
 }
 
 .ventana{
@@ -195,3 +124,10 @@
     padding: 10px;
 }
 
+.checkminimizar{
+    padding-top: 10px;
+}
+
+.checklist{
+    margin-right: 13px;
+}

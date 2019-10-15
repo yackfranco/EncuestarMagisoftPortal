@@ -114,7 +114,8 @@ if ($accion == "busquedausuario") {
     //print_r($datoUsuario);    
 }
 if ($accion == "registroUsuarios") {
-    $Datos = DevolverUnArreglo("SELECT registrousuario.fecharegistro,ciudad.NombreCiudad,sede.NombreSede, usuario.NombreUsuario,(SELECT if (registrousuario.fecharegistro> (SELECT NOW() - INTERVAL 2 MINUTE), 'YES', 'NO')) as estado FROM `registrousuario` join ciudad on (ciudad.IdCiudad = registrousuario.idciudad) join sede on (sede.IdSede = registrousuario.idsede) join usuario on (usuario.IdUsuario = registrousuario.idusuario) where usuario.estado != 'ELIMINADO' order by estado desc,fecharegistro desc");
+    $idempresa = $_REQUEST["IdEmpresa"];
+    $Datos = DevolverUnArreglo("SELECT registrousuario.fecharegistro,ciudad.NombreCiudad,sede.NombreSede, usuario.NombreUsuario,(SELECT if (registrousuario.fecharegistro> (SELECT NOW() - INTERVAL 2 MINUTE), 'YES', 'NO')) as estado FROM `registrousuario` join ciudad on (ciudad.IdCiudad = registrousuario.idciudad) join sede on (sede.IdSede = registrousuario.idsede) join usuario on (usuario.IdUsuario = registrousuario.idusuario) where usuario.estado != 'ELIMINADO' and registrousuario.idempresa = $idempresa order by estado desc,fecharegistro desc");
     $validar = $Datos;
 }
 

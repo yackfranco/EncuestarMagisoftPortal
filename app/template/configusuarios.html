@@ -16,62 +16,63 @@
                             <h1 class="tituloconfigusuario">Configurar Usuarios</h1>
                         </div>
                         <div class="configusuarios2">
-                            <div class="contenedorfromconfigusuario">
-                                <div class="configusuarios2left">
-                                    <div class="inputcontenedorconfigusuario1">
-                                        <div class="form-group grupoinputsconfigusuario" style="margin-top: 0px;">
-                                            <label class="labelconfigusuarios">Elegir Asesor:</label>
-                                            <select class="form-control borderinput" ng-change="elegirUsuario(idusuario)" ng-model="idusuario">
-                                                <option></option>
-                                                <option ng-repeat="usu in usuarios" value="{{usu.IdUsuario}}">{{usu.NombreUsuario}}</option>
-                                            </select>
-                                        </div>
+                            <div class="contenedorconfigusuarios2">
+                                <div class="contenedorconfigusuarios2right" style="border-right: solid 1px white">
+                                    <div class="form-group grupoinputsconfigusuario" style="margin-top: 0px;">
+                                        <label class="labelconfigusuarios">Elegir Asesor:</label>
+                                        <select class="form-control borderinput" ng-change="elegirUsuario(idusuario)" ng-model="idusuario">
+                                            <option></option>
+                                            <option ng-repeat="usu in usuarios" value="{{usu.IdUsuario}}">{{usu.NombreUsuario}}</option>
+                                            <option value="Todos los usuarios">Todos los usuarios</option>
+                                        </select>
                                     </div>
-                                    <div class="inputcontenedorconfigusuario2" style="margin-top: 10px;">
-                                        <div class="form-group grupoinputsconfigusuario" >
-                                            <label class="labelconfigusuarios">Elegir Modo de trabajo:</label>
-                                            <select class="form-control borderinput" ng-change="preguntaEncuesta(confiusuarios.Modo)" ng-model="confiusuarios.Modo">
-                                                <option value="Mono" >Mono-Pregunta</option>
-                                                <option value="Multi">Multi-Pregunta</option>
-                                            </select>
-                                        </div>
+                                    <div class="form-group grupoinputsconfigusuario" >
+                                        <label class="labelconfigusuarios">Elegir Modo de trabajo:</label>
+                                        <select class="form-control borderinput" ng-change="preguntaEncuesta(confiusuarios.Modo)" ng-model="confiusuarios.Modo">
+                                            <option value="Mono" >Mono-Pregunta</option>
+                                            <option value="Multi">Multi-Pregunta</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="configusuarios2right">
-                                    <div class="inputcontenedorconfigusuario1">
-                                        <div class="form-group grupoinputsconfigusuario" style="margin-top: 0px;">
-                                            <label class="labelconfigusuarios">Elegir Método de trabajo:</label>
-                                            <select class="form-control borderinput" ng-change="elegirmetodo(confiusuarios.Metodo)" ng-model="confiusuarios.Metodo">
-                                                <option ng-show="Automatico">Automatico</option>
-                                                <option ng-show="Manual">Manual</option>
-                                                <option ng-show="Seleccionable">Seleccionable</option>
-                                            </select>
-                                        </div>
+                                <div class="contenedorconfigusuarios2left">
+                                    <div class="form-group grupoinputsconfigusuario" style="margin-top: 0px;">
+                                        <label class="labelconfigusuarios">Elegir Método de trabajo:</label>
+                                        <select class="form-control borderinput"  ng-disabled="HabilitarMetodo" ng-change="elegirmetodo(confiusuarios.Metodo)" ng-model="confiusuarios.Metodo">
+                                            <option ng-show="Automatico">Automatico</option>
+                                            <option ng-show="Manual">Manual</option>
+                                            <option ng-show="Seleccionable">Seleccionable</option>
+                                        </select>
                                     </div>
-                                    <div class="inputcontenedorconfigusuario2" style="margin-top: 10px;">
-                                        <div class="form-group grupoinputsconfigusuario" >
-                                            <label class="labelconfigusuarios" id="PE">Elegir Pregunta:</label>
-                                            <select class="form-control borderinput" ng-change="preguntaEncuestaid(confiusuarios.Encuesta)" ng-model="confiusuarios.Encuesta">
-                                                <option ng-if="OpcionSeleccion == 'Pregunta'" ng-repeat="pregunta in preguntas" value="{{pregunta.IdPregunta}}">{{pregunta.Pregunta}}</option>
-                                                <option ng-if="OpcionSeleccion == 'Encuesta'" ng-repeat="enc in encuestas" value="{{enc.IdPaquete}}">{{enc.Paquete}}</option>
-                                            </select>
-                                        </div>
-                                    </div>                            
+                                    <div class="form-group grupoinputsconfigusuario" >
+                                        <label class="labelconfigusuarios" id="PE">Elegir Pregunta:</label>
+                                        <select class="form-control borderinput"  ng-disabled="HabilitarMetodo" ng-change="preguntaEncuestaid(confiusuarios.Encuesta)" ng-model="confiusuarios.Encuesta">
+                                            <option ng-if="OpcionSeleccion == 'Pregunta'" ng-repeat="pregunta in preguntas" value="{{pregunta.IdPregunta}}">{{pregunta.Pregunta}}</option>
+                                            <option ng-if="OpcionSeleccion == 'Encuesta'" ng-repeat="enc in encuestas" value="{{enc.IdPaquete}}">{{enc.Paquete}}</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>                    
-                            <div class="contenedorbotonfromconfigusuario">
-                                <div class="form-check-inline checkminimizar" style="padding-top: 2px; padding-bottom: 2px">
-                                    <label class="form-check-label ventana">
-                                        <input type="checkbox" class="form-check-input check" ng-model="checkValueAsesores" style="margin-right: 14px;" ng-change="checkAllAsesores(checkValueAsesores)">Todos Los Asesores
-                                    </label>
-                                </div>
-                                <div class="form-check-inline checkminimizar">
-                                    <label class="form-check-label ventana">
-                                        <input type="checkbox" class="form-check-input check" ng-model="checkValue" style="margin-right: 14px;" ng-change="checkAll(checkValue)">Minimizar Ventana
-                                    </label>
-                                </div>
-                                <button type="submit" class="btn btn-success" ng-click="submitconfigusuarios()">Guardar</button> 
                             </div>
+                        </div>
+                        <div class="configusuarios3">
+                            <div class="contenedorconfigusuarios3">
+                                <div class="contenedorconfigusuarios3right" style="border-right: solid 1px white">
+                                    <div class="form-check-inline ">
+                                        <label class="form-check-label ">
+                                            <input type="checkbox" class="form-check-input check" ng-model="checkValueAsesores" style="margin-right: 14px;" ng-change="checkAllAsesores(checkValueAsesores)">Todos Los Asesores
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="contenedorconfigusuarios3left">
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input check" ng-model="checkValue" style="margin-right: 14px;" ng-change="checkAll(checkValue)">Minimizar Ventana
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="configusuarios4">
+                            <button type="submit" class="btn btn-success" ng-click="submitconfigusuarios()">Guardar</button> 
                         </div>
                     </div>
                 </div>

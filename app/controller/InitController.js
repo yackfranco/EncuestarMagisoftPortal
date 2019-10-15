@@ -93,7 +93,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
         if ($scope.usuario.usuario == "" || $scope.usuario.usuario == undefined || $scope.usuario.usuario == 0) {
             mensajemodal("Por Favor Digite Su Usuario");
         } else {
-            datos = {accion: "RecuperarContrasenalogin", idusuario: $scope.usuario.usuario};
+            datos = {accion: "RecuperarContrasenalogin", usuario: $scope.usuario.usuario};
             servicios.login(datos).then(function success(response) {
                 mensajemodal("Correo enviado");
             }, function myError(response) {

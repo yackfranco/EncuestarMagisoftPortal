@@ -86,6 +86,12 @@ if ($accion == "AvisarLicencia") {
     $IdEmpresa = $_REQUEST["IdEmpresa"];
     $inicio = DevolverUnDato("Select CURDATE()");
     $fin = DevolverUnDato("Select FechaLicencia from datosempresa where IdEmpresa = $IdEmpresa");
+    $fechaactialhoy = DevolverUnDato("select now()");
+    if ($fin < $fechaactialhoy) {
+        $validar = "No hay licencia";
+        echo json_encode($validar, JSON_UNESCAPED_UNICODE);
+        exit();
+    }
 
 //    $inicio = "2014-01-01 00:00:00";
 //    $fin = "2014-11-01 23:59:59";

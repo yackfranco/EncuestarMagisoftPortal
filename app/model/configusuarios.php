@@ -56,6 +56,20 @@ if ($accion == "subtmiconfiguser") {
 }
 
 
+if ($accion == "listarconfiguracion") {
+    $IdUsuario = $_REQUEST["idusuario"];
+    $configusuario = DevolverUnArreglo("SELECT * FROM estilocalificacion WHERE IdUsuario = '$IdUsuario'");
+    if ($configusuario[0]['Modo'] == "Multi") {
+        $encuespregun = DevolverUnArreglo("SELECT * FROM paquete WHERE Estado = 'ACTIVO' AND  IdPaquete = " . $configusuario[0]['Estilo']);
+        $encuesta = $encuespregun;
+    } else {
+        $encuespregun = DevolverUnArreglo("SELECT * FROM pregunta WHERE Estado = 'ACTIVO' AND IdPregunta = " . $configusuario[0]['Estilo']);
+        $encuesta = $encuespregun;
+    }
+    $respuesta = array($configusuario, $encuesta);
+}
+
+
 
 echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
 ?>

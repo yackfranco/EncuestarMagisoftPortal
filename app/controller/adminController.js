@@ -1,7 +1,7 @@
 angular.module('Calificadores').controller('adminController', InitController);
 InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$interval'];
 function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $interval) {
-$scope.botoncalif = "botonescontorno";
+    $scope.botoncalif = "botonescontorno";
     $scope.botoncaliftxt = "botonestxt";
     $scope.botoncaliffa = "botonesfa";
     console.log("prueba");
@@ -24,7 +24,7 @@ $scope.botoncalif = "botonescontorno";
     totalcalificaciones();
 
     //FUNCION PARA LLAMAR A LA MODAL
-   function mensajemodal(mensaje, titulo = "ATENCIÓN") {
+    function mensajemodal(mensaje, titulo = "ATENCIÓN") {
         swal({
             title: titulo,
             text: mensaje
@@ -50,6 +50,17 @@ $scope.botoncalif = "botonescontorno";
     function VigilarLicencia() {
         datos = {accion: "AvisarLicencia", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.admin(datos).then(function success(response) {
+            console.log(response.data);
+            if (response.data == "No hay licencia") {
+                delete $LocalStorage.usuarioguardado;
+                delete $LocalStorage.nombrecompletoguardado;
+                delete $LocalStorage.idusuarioguardado;
+                delete $LocalStorage.cedulaguardado;
+                delete $LocalStorage.rolguardado;
+                delete $LocalStorage.IdEmpresa;
+                $state.go('index');
+                return;
+            }
             if (response.data.Meses > 0 && response.data.Meses <= 3) {
                 swal({
                     title: "Atención",

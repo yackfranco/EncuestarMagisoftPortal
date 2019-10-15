@@ -75,9 +75,18 @@ function generateRandomString($length = 10) {
 $mail = new PHPMailer(true);
 if ($accion == "RecuperarContrasenalogin") {
     include 'ConexionNubeCorreo.php';
-   
-    $idusuario = $_REQUEST["nombreusuario"];
 
+    $usuario = $_REQUEST["usuario"];
+   
+    $usuario = DevolverUnArreglo("select * from usuario where NombreUsuario = '$usuario' and Rol = 'ADMINISTRADOR'");
+    if (count($usuario)<=0) {
+        $validar = array('respuesta' => "El Usuario no es ADMINISTRADOR");
+        echo json_encode($validar, JSON_FORCE_OBJECT);
+        exit();
+    }
+//    print_r($usuario);
+//    exit();
+    $idusuario = $usuario[0]["IdUsuario"];
     $contrarandom = generateRandomString();
     $correo = DevolverUnDato("select Correo from usuario where IdUsuario = $idusuario");
 
