@@ -23,7 +23,8 @@ $IdEmpresa = $_REQUEST["IdEmpresa"];
 class PDF extends FPDF {
 
     function Header() {
-        $DatosEmpresa = DevolverUnArreglo("SELECT * from datosempresa");
+        global $IdEmpresa;
+        $DatosEmpresa = DevolverUnArreglo("SELECT * from datosempresa where IdEmpresa = $IdEmpresa");
 
         $this->Image('img/LOGO.png', 3, 3, 30);
         $this->SetFont('Arial', 'B', 15);
@@ -49,16 +50,15 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 
-$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif,COUNT(*) as Total FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario) join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
-$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario)  join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
-
+$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta, valorcalif.ValorCalif from calificacion, sede, ciudad, usuario, pregunta, (SELECT * from valorcalif WHERE valorcalif.IdEmpresa = $IdEmpresa) as valorcalif WHERE (valorcalif.NumeroCalif = calificacion.NumeroCalif) AND (usuario.IdUsuario = calificacion.IdUsuario) AND (calificacion.IdSede = sede.IdSede) AND (ciudad.IdCiudad = calificacion.IdCiudad) AND (pregunta.IdPregunta = calificacion.IdPregunta) AND calificacion.IdEmpresa = $IdEmpresa ";
+$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta, valorcalif.ValorCalif,COUNT(*) as Total from calificacion, sede, ciudad, usuario, pregunta, (SELECT * from valorcalif WHERE valorcalif.IdEmpresa = $IdEmpresa) as valorcalif WHERE (valorcalif.NumeroCalif = calificacion.NumeroCalif) AND (usuario.IdUsuario = calificacion.IdUsuario) AND (calificacion.IdSede = sede.IdSede) AND (ciudad.IdCiudad = calificacion.IdCiudad) AND (pregunta.IdPregunta = calificacion.IdPregunta) AND calificacion.IdEmpresa = $IdEmpresa ";
 if ($fechainical != null && $fechafinal != null) {
-    $concatF1F2 = " WHERE calificacion.IdEmpresa = $IdEmpresa and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechafinal 23:59:59')";
+    $concatF1F2 = "  and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechafinal 23:59:59')";
     $consultainicial = $consultainicial . $concatF1F2;
     $consultainicial2 = $consultainicial2 . $concatF1F2;
 }
 if ($fechainical != null && $fechafinal == null) {
-    $concatF1F2 = " WHERE calificacion.IdEmpresa = $IdEmpresa and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechainical 23:59:59')";
+    $concatF1F2 = " and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechainical 23:59:59')";
     $consultainicial = $consultainicial . $concatF1F2;
     $consultainicial2 = $consultainicial2 . $concatF1F2;
 }

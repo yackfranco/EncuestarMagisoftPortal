@@ -15,21 +15,15 @@
                     <div class="usuarios1">
                         <div class="usuarios101">
                         </div>
-
                         <div class="usuarios102">    
                             <h1 class="titulousuario">EMPRESAS</h1>                    
                         </div>
-
                         <div class="usuarios103">     
-
                             <div class="form-group busquedausuario">
                                 <label class="labelusuariosbusqueda">Buscar:</label>
-
                                 <input type="text" class="form-control" ng-change="busquedaempresas()" ng-model="busuario" >
                             </div>                   
                         </div>
-
-
                     </div>
                     <div class="usuarios2">
                         <form class="fromusuarios" ng-submit="submitEmpresa()">
@@ -48,7 +42,6 @@
                                 </div>
 
                                 <div class="empresas2right">
-
                                     <div class="inputcontenedorusuario1">
                                         <div class="form-group grupoinputs">
                                             <label class="labelusuarios">Slogan:</label>
@@ -56,16 +49,14 @@
                                         </div>
                                         <div class="form-group grupoinputs">
                                             <label class="labelusuarios">Fecha Licencia:</label>
-                                                                                    <!--<input type="password" class="form-control" ng-model="usuarios.contrasena1">-->
+                                            <!--<input type="password" class="form-control" ng-model="usuarios.contrasena1">-->
                                             <input
                                                 class="Empresainputsreportefecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
                                                 type="date" ng-change="EMfechainicial(FechaLicencia)"
                                                 ng-model="FechaLicencia">
                                         </div>
-
                                     </div>                                
                                 </div>
-
                             </div>
                             <div class="contenedorbotonfromusuario">
                                 <button type="submit" class="btn btn-success">Guardar</button>   
@@ -81,17 +72,15 @@
                                     <th>NIT</th>
                                     <th>SLOGAN</th>
                                     <th>FECHA LICENCIA</th>
-                                    <th>USUARIO</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="usu in empresas">
+                                <tr ng-repeat="usu in empresastabla">
                                     <td>{{usu.Nombre}}</td>
                                     <td>{{usu.nit}}</td>
                                     <td>{{usu.Slogan}}</td>
                                     <td>{{usu.FechaLicencia}}</td>
-                                    <td>{{usu.NombreUsuario}}</td>
                                     <td>
                                         <button title="Editar Empresa" class="fa fa-pencil-square-o btn btn-primary btneditarusuario" style="font-size:25px" data-toggle="modal" data-target="#editarusuario" ng-click="listarEmpresa(usu.IdEmpresa)"></button>
                                         <button title="Eliminado Logico" class="fa fa-trash btn btn-danger btneliminarusuario" style="font-size:25px" data-toggle="modal" data-target="#eliminarusuario" ng-click="listarEmpresaeliminar(usu.IdEmpresa)"></button>
@@ -107,208 +96,97 @@
         </div>
     </div>
 </div>
-
-<!--<div class="contenedoradmin" style="height: 100vh; width: 100vw;">
-    <div class="contenedoradmin1">
-        <div class="contenedoradminnavegacion" ng-include="'app/template/supernavegacion.html'">
-        </div>
-        <div class="contenedoradmininterfaces">
-            <div class="contenedorarriba">
-                <div class="contenedorarriba1" ng-include="'app/template/navegacion.html'">
-                </div> 
+  
+<!--MODAL PARA ELIMINAR USUARIO-->   
+<div class="modal fade" id="eliminarusuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--Modal Header--> 
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Usuario</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="contenedorinterfaces">
-                <div class="contenedorusuarios">
-                    <div class="usuarios1">
-                        <div class="usuarios101">
-                        </div>
-
-                        <div class="usuarios102">    
-                            <h1 class="titulousuario">EMPRESAS</h1>                    
-                        </div>
-
-                        <div class="usuarios103">     
-
-                            <div class="form-group busquedausuario">
-                                <label class="labelusuariosbusqueda">Buscar:</label>
-
-                                <input type="text" class="form-control" ng-change="busquedaempresas()" ng-model="busuario" >
-                            </div>                   
-                        </div>
-
-
-                    </div>
-                    <div class="usuarios2">
-                        <form class="fromusuarios" ng-submit="submitEmpresa()">
-                            <div class="contenedorformulariempresas">
-                                <div class="empresas2left">  
-                                    <div class="inputcontenedorusuario1">
-                                        <div class="form-group grupoinputs">
-                                            <label class="labelusuarios">Nombre Empresa:</label>
-                                            <input type="text" class="form-control" ng-model="empresas.nombre">
-                                        </div>
-                                        <div class="form-group grupoinputs">
-                                            <label class="labelusuarios">Nit:</label>
-                                            <input type="text" class="form-control" ng-model="empresas.nit">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="empresas2right">
-
-                                    <div class="inputcontenedorusuario1">
-                                        <div class="form-group grupoinputs">
-                                            <label class="labelusuarios">Slogan:</label>
-                                            <input type="text" class="form-control" ng-model="empresas.slogan">
-                                        </div>
-                                        <div class="form-group grupoinputs">
-                                            <label class="labelusuarios">Fecha Licencia:</label>
-                                                                                    <input type="password" class="form-control" ng-model="usuarios.contrasena1">
-                                            <input
-                                                class="Empresainputsreportefecha form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-                                                type="date" ng-change="EMfechainicial(FechaLicencia)"
-                                                ng-model="FechaLicencia">
-                                        </div>
-
-                                    </div>                                
-                                </div>
-
-                            </div>
-                            <div class="contenedorbotonfromusuario">
-                                <button type="submit" class="btn btn-success">Guardar</button>   
-                            </div>
-                        </form> 
-                    </div>
-                    TABLA USUARIO
-                    <div class="usuarios3 table-responsive tablascrollusuario  my-custom-scrollbarUsuarios">
-                        <table class="table table-dark table-hover">
-                            <thead>
-                                <tr>
-                                    <th>NOMBRE</th>
-                                    <th>NIT</th>
-                                    <th>SLOGAN</th>
-                                    <th>FECHA LICENCIA</th>
-                                    <th>USUARIO</th>
-                                    <th>OPCIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="usu in empresas">
-                                    <td>{{usu.Nombre}}</td>
-                                    <td>{{usu.nit}}</td>
-                                    <td>{{usu.Slogan}}</td>
-                                    <td>{{usu.FechaLicencia}}</td>
-                                    <td>{{usu.NombreUsuario}}</td>
-                                    <td>
-                                        <button title="Editar Empresa" class="fa fa-pencil-square-o btn btn-primary btneditarusuario" style="font-size:25px" data-toggle="modal" data-target="#editarusuario" ng-click="listarEmpresa(usu.IdEmpresa)"></button>
-                                        <button title="Eliminado Logico" class="fa fa-trash btn btn-danger btneliminarusuario" style="font-size:25px" data-toggle="modal" data-target="#eliminarusuario" ng-click="listarEmpresaeliminar(usu.IdEmpresa)"></button>
-                                        <button title="Editar Calificaciones" class="fa fa-pencil-square-o btn btn-primary btneditarusuario" style="font-size:25px" data-toggle="modal" data-target="#editarcalif" ng-click="listarCalificaciones(usu.IdEmpresa)"></button>
-                                        <button title="Eliminado Físico" class="fa fa-trash btn btn-danger btneliminarusuario" style="font-size:25px" data-toggle="modal" data-target="#eliminarEmpresaFisico" ng-click="listarEmpresaeliminarFisico(usu.IdEmpresa)"></button>
-                                    </td>     
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <!--Modal body--> 
+            <div class="modal-body">
+                Deseas Eliminar El Usuario?
+            </div>
+            <!--Modal footer--> 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="eliminarEmpresa()">Eliminar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
+</div> 
 
+<!--MODAL PARA ELIMINAR empresa fisico-->   
+<div class="modal fade" id="eliminarEmpresaFisico">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--Modal Header--> 
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar Usuario</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!--Modal body--> 
+            <div class="modal-body">
+                Deseas Eliminar El Usuario?
+            </div>
+            <!--Modal footer--> 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="EliminadoFisico()">Eliminar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div> 
 
-
-    MODAL PARA ELIMINAR USUARIO   
-    <div class="modal fade" id="eliminarusuario">
-        <div class="modal-dialog">
+<!--MODAL PARA EDITAR USUARIO-->  
+<div class="modal fade" id="editarusuario">
+    <div class="modal-dialog">
+        <form>
             <div class="modal-content">
-                 Modal Header 
+                <!--Modal Header--> 
                 <div class="modal-header">
-                    <h4 class="modal-title">Eliminar Usuario</h4>
+                    <h5 class="modal-title">Editar Empresa</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                 Modal body 
-                <div class="modal-body">
-                    Deseas Eliminar El Usuario?
+                <!--Modal body--> 
+                <div class="modal-body modaleditusuario">
+                    <div class="form-group grupoinputseditusuario">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" ng-model="editEmpresa.Nombre">
+                        <label>Nit:</label>
+                        <input disabled="true" type="text" class="form-control" ng-model="editEmpresa.nit">
+                        <label>Slogan:</label>
+                        <input type="text" class="form-control" ng-model="editEmpresa.Slogan">
+                        <label>Fecha Licencia:</label>
+                        <input class=" form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                               value="{{editEmpresa.FechaLicencia}}" type="date" ng-change="UPfechainicial(FechaLicencia2)"
+                               ng-model="FechaLicencia2">
+                    </div>
                 </div>
-                 Modal footer 
+<!--                Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="eliminarEmpresa()">Eliminar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                </div>
-
-            </div>
-        </div>
-    </div> 
-    
-
-    MODAL PARA EDITAR USUARIO  
-    <div class="modal fade" id="editarusuario">
-        <div class="modal-dialog">
-            <form>
-                <div class="modal-content">
-                     Modal Header 
-                    <div class="modal-header">
-                        <h5 class="modal-title">Editar Empresa</h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                     Modal body 
-                    <div class="modal-body modaleditusuario">
-
-                        <div class="form-group grupoinputseditusuario">
-                            <label>Nombre:</label>
-                            <input type="text" class="form-control" ng-model="editEmpresa.Nombre">
-                            <label>Nit:</label>
-                            <input disabled="true" type="text" class="form-control" ng-model="editEmpresa.nit">
-                            <label>Slogan:</label>
-                            <input type="text" class="form-control" ng-model="editEmpresa.Slogan">
-                            <label>Fecha Licencia:</label>
-                            <input class=" form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
-                                   value="{{editEmpresa.FechaLicencia}}" type="date" ng-change="UPfechainicial(FechaLicencia2)"
-                                   ng-model="FechaLicencia2">
-                        </div>
-                    </div>
-                     Modal footer 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="editarEmpresas(editEmpresa.IdEmpresa)" >Guardar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>  
-    MODAL PARA CONTROLAR EL FORMULARIO USUARIO  
-    <div class="modal fade" id="btnformulariousuario">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    {{mensaje}}
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="editarEmpresas(editEmpresa.IdEmpresa)" >Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
                 </div>
             </div>
-        </div>
-    </div> 
-</div>-->
-
-    <!--MODAL PARA ELIMINAR empresa fisico-->   
-    <div class="modal fade" id="eliminarEmpresaFisico">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                 <!--Modal Header--> 
-                <div class="modal-header">
-                    <h4 class="modal-title">Eliminar Usuario</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                 <!--Modal body--> 
-                <div class="modal-body">
-                    Deseas Eliminar El Usuario?
-                </div>
-                 <!--Modal footer--> 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="EliminadoFisico()">Eliminar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                </div>
-
+        </form>
+    </div>
+</div>  
+<!--MODAL PARA CONTROLAR EL FORMULARIO USUARIO-->  
+<div class="modal fade" id="btnformulariousuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{mensaje}}
             </div>
         </div>
-    </div> 
+    </div>
+</div> 
+<!--</div>-->
+
 <!--MODAL PARA EDITAR CALIFICACIONES-->  
 <div class="modal fade" id="editarcalif">
     <div class="modal-dialog">

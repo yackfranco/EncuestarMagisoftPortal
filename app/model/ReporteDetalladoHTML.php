@@ -1,11 +1,6 @@
 <?php
 
 include 'conexion.php';
-$DatosEmpresa = DevolverUnArreglo("SELECT * from datosempresa");
-
-$nit = $DatosEmpresa[0]['nit'];
-$nombre = $DatosEmpresa[0]['Nombre'];
-$slogan = $DatosEmpresa[0]['Slogan'];
 
 // $prueba = "<h3 style='margin:1px;'>$nombre</h3><h4 style='margin:1px;'>$slogan</h4>";
 
@@ -17,16 +12,20 @@ $IdSede = $_REQUEST["gIdSede"];
 $Pregunta = $_REQUEST["gPregunta"];
 $IdEmpresa = $_REQUEST["IdEmpresa"];
 
-$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif,COUNT(*) as Total FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario) join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
-$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario)  join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
+$DatosEmpresa = DevolverUnArreglo("SELECT * from datosempresa where IdEmpresa = $IdEmpresa");
+$nit = $DatosEmpresa[0]['nit'];
+$nombre = $DatosEmpresa[0]['Nombre'];
+$slogan = $DatosEmpresa[0]['Slogan'];
 
+$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta, valorcalif.ValorCalif from calificacion, sede, ciudad, usuario, pregunta, (SELECT * from valorcalif WHERE valorcalif.IdEmpresa = $IdEmpresa) as valorcalif WHERE (valorcalif.NumeroCalif = calificacion.NumeroCalif) AND (usuario.IdUsuario = calificacion.IdUsuario) AND (calificacion.IdSede = sede.IdSede) AND (ciudad.IdCiudad = calificacion.IdCiudad) AND (pregunta.IdPregunta = calificacion.IdPregunta) AND calificacion.IdEmpresa = $IdEmpresa ";
+$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta, valorcalif.ValorCalif,COUNT(*) as Total from calificacion, sede, ciudad, usuario, pregunta, (SELECT * from valorcalif WHERE valorcalif.IdEmpresa = $IdEmpresa) as valorcalif WHERE (valorcalif.NumeroCalif = calificacion.NumeroCalif) AND (usuario.IdUsuario = calificacion.IdUsuario) AND (calificacion.IdSede = sede.IdSede) AND (ciudad.IdCiudad = calificacion.IdCiudad) AND (pregunta.IdPregunta = calificacion.IdPregunta) AND calificacion.IdEmpresa = $IdEmpresa ";
 if ($fechainical != null && $fechafinal != null) {
-    $concatF1F2 = " WHERE calificacion.IdEmpresa = $IdEmpresa and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechafinal 23:59:59')";
+    $concatF1F2 = "  and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechafinal 23:59:59')";
     $consultainicial = $consultainicial . $concatF1F2;
     $consultainicial2 = $consultainicial2 . $concatF1F2;
 }
 if ($fechainical != null && $fechafinal == null) {
-    $concatF1F2 = " WHERE calificacion.IdEmpresa = $IdEmpresa and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechainical 23:59:59')";
+    $concatF1F2 = " and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechainical 23:59:59')";
     $consultainicial = $consultainicial . $concatF1F2;
     $consultainicial2 = $consultainicial2 . $concatF1F2;
 }

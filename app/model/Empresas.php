@@ -27,7 +27,13 @@ if ($accion == "ingresarempresas") {
 
                 hacerConsulta("INSERT INTO usuario (Cedula, NombreCompleto, Rol, Estado, NombreUsuario, Contrasena, EstadoContrasena, IdEmpresa) 
                 VALUES ('$nit', '$nombre', 'ADMINISTRADOR', 'ACTIVO', '$nit','".md5($nit)."', 'NORMAL', $IdEmpresa)");
+               
+               $IdPaquete = InsertDevolviendoID("INSERT INTO paquete (IdEmpresa, Paquete, Estado) 
+                VALUES ($IdEmpresa, 'SERVICIO', 'ACTIVO')");
 
+               hacerConsulta("INSERT INTO pregunta (IdEmpresa, IdPaquete, Pregunta, Estado) 
+                VALUES ($IdEmpresa, $IdPaquete, '¿ COMO LE PARECIO EL SERVICIO ?', 'ACTIVO')");
+               
             hacerConsulta("INSERT INTO valorcalif (IdEmpresa,NumeroCalif,valorcalif) VALUES ($IdEmpresa,1,'MALO'),($IdEmpresa,2,'REGULAR'),($IdEmpresa,3,'BUENO'),($IdEmpresa,4,'EXCELENTE')");
             $validar = "valido";
         }
@@ -136,7 +142,7 @@ if ($accion == "GuardarCalif") {
     }
 
 //FUNCION PARA GENERAR UNA CONTRASEÑA RANDOM
-    function generateRandomString($length = 10) {
+    function generateRandomString($length = 20) {
         $val = true;
         $val2 = "";
         while ($val) {

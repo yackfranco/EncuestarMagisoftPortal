@@ -1,20 +1,20 @@
 angular.module('Calificadores').controller('sedesController', InitController);
-InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage','$interval'];
-function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage,$interval) {
+InitController.$inject = ['$scope', '$state', '$sessionStorage', 'servicios', '$localStorage', '$interval'];
+function InitController($scope, $state, $sessionStorage, servicios, $LocalStorage, $interval) {
     $scope.botonsede = "botonescontorno";
     $scope.botonsedetxt = "botonestxt";
     $scope.botonsedefa = "botonesfa";
-    if($LocalStorage.usuarioguardado != undefined){
-        if($LocalStorage.rolguardado == "ADMINISTRADOR"){
+    if ($LocalStorage.usuarioguardado != undefined) {
+        if ($LocalStorage.rolguardado == "ADMINISTRADOR") {
             $state.go('sedes');
         } else {
             $state.go('index');
         }
-    } else{
+    } else {
         $state.go('index');
     }
     $scope.nombrecompletoadmin = $LocalStorage.nombrecompletoguardado;
-    
+
     //FUNCION PARA VALIDAR CAMPOS VACIOS
     function comprobarempty(objeto) {
         if (objeto == "" || objeto == undefined) {
@@ -42,108 +42,98 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
 
     //rutina para validar que solo ingresen letras
     function validarSoloLetra(string) {
-        if (/[Ã±Ã‘'Ã¡Ã©ÃÃ³ÃºÃÃ‰ÃÃ“ÃšÃ$#´Ã¨Ã¬Ã²Ã¹Ã€ÃˆÃŒÃ’Ã™Ã¢ÃªÃ®Ã´Ã»Ã‚ÃŠÃŽÃ”Ã›Ã‘Ã±Ã¤Ã«Ã¯Ã¶Ã¼Ã„Ã‹ÃÃ–Ãœ\s\t|]/.test(string))
+        if (string.includes("#") || string.includes("$") || string.includes("´"))
         {
-           return true;
-            /*
-            document.getElementById(campo).select();
-            document.getElementById(campo).focus();*/
+            return true;
         }
     }
-
 
     listarciudades();
 
     function listarciudades() {
-        datos = {accion: "listarciudades", IdEmpresa: $LocalStorage.IdEmpresa};        
+        datos = {accion: "listarciudades", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.sedes(datos).then(function success(response) {
-           $scope.listaciudad = response.data;
+            $scope.listaciudad = response.data;
         });
     }
-    
-    
+
     listarciudadselect();
     function listarciudadselect() {
-        datos = {accion: "listarciudadselect", IdEmpresa: $LocalStorage.IdEmpresa};        
+        datos = {accion: "listarciudadselect", IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.sedes(datos).then(function success(response) {
-            //console.log(response);
-           $scope.listarciudades = response.data;
+            $scope.listarciudades = response.data;
         });
     }
 
     ///TOMA LOS DATOS DE DEL FORMULARIO SEDE
     $scope.ciudad = {};
     //FUNCION PARA INGRESAR LAS SEDES
-    $scope.ingresarciudad = function(){
-        if(comprobarempty($scope.ciudad["nombreciudad"])){
+    $scope.ingresarciudad = function () {
+        if (comprobarempty($scope.ciudad["nombreciudad"])) {
             mensajemodal("Debe De Llenar Los Campos");
-        } else{
-            if(validarSoloLetra($scope.ciudad["nombreciudad"])){
+        } else {
+            if (validarSoloLetra($scope.ciudad["nombreciudad"])) {
                 mensajemodal("Los Campos no deben contener los siguientes caracteres $ ´ #");
-            }else{
+            } else {
                 $scope.ciudad.accion = "ingresarciudad";
                 $scope.ciudad.IdEmpresa = $LocalStorage.IdEmpresa;
                 servicios.sedes($scope.ciudad).then(function success(response) {
-                console.log(response);
-                if(response["data"] == "invalido"){
-                    mensajemodal("La Ciudad: " + $scope.ciudad["nombreciudad"] +" Ya Existe");
-                }else{
-                    mensajemodal("La Ciudad: " + $scope.ciudad["nombreciudad"] +" Fue Registrada Con Éxito");
-                    //LIMPIAR DATOS DE LOS INPUTS
-                    $scope.ciudad = {};
-                    listarciudades();
-                    listarciudadselect();
-                }
-                });
-            }    
-        }
-    }
-
-
-    ///FUNCION PARA TRAER LA SEDE A EDITAR
-    $scope.traerciudad = function(idciudad){
-        datos = {accion: "traerciudad"};
-        datos.idciudad = idciudad;
-        console.log(datos);
-    
-        servicios.sedes(datos).then(function success(response) {       
-            $scope.editarciudad = response.data[0];
-        });
-    }
-
-
-    //FUNCION PARA EDITAR LA SEDE
-    $scope.editarlaciudad = function(IdCiudad){
-        if(comprobarempty($scope.editarciudad["NombreCiudad"]))
-        {
-            mensajemodal("Debe de Llenar Todos Los Campos");
-        }else{
-            if(validarSoloLetra($scope.editarciudad["NombreCiudad"])){
-                mensajemodal("Los Campos no deben contener los siguientes caracteres $ ´ #");
-            }else{
-                $scope.editarciudad.accion = "editarciudad";
-                $scope.editarciudad.IdCiudad = IdCiudad;
-                servicios.sedes($scope.editarciudad).then(function success(response) {
-                if(response.data == "invalido"){
-                    mensajemodal("La ciudad ya se ecuentra registrada");    
-                }else{
-                    console.log(response.data);
-                    mensajemodal("Ciudad Editada Con Éxito");
-                    listarciudades()
-                }                
+                    console.log(response);
+                    if (response["data"] == "invalido") {
+                        mensajemodal("La Ciudad: " + $scope.ciudad["nombreciudad"] + " Ya Existe");
+                    } else {
+                        mensajemodal("La Ciudad: " + $scope.ciudad["nombreciudad"] + " Fue Registrada Con Éxito");
+                        //LIMPIAR DATOS DE LOS INPUTS
+                        $scope.ciudad = {};
+                        listarciudades();
+                        listarciudadselect();
+                    }
                 });
             }
         }
     }
 
+    ///FUNCION PARA TRAER LA SEDE A EDITAR
+    $scope.traerciudad = function (idciudad) {
+        datos = {accion: "traerciudad"};
+        datos.idciudad = idciudad;
+        console.log(datos);
+
+        servicios.sedes(datos).then(function success(response) {
+            $scope.editarciudad = response.data[0];
+        });
+    }
+
+    //FUNCION PARA EDITAR LA SEDE
+    $scope.editarlaciudad = function (IdCiudad) {
+        if (comprobarempty($scope.editarciudad["NombreCiudad"]))
+        {
+            mensajemodal("Debe de Llenar Todos Los Campos");
+        } else {
+            if (validarSoloLetra($scope.editarciudad["NombreCiudad"])) {
+                mensajemodal("Los Campos no deben contener los siguientes caracteres $ ´ #");
+            } else {
+                $scope.editarciudad.accion = "editarciudad";
+                $scope.editarciudad.IdCiudad = IdCiudad;
+                servicios.sedes($scope.editarciudad).then(function success(response) {
+                    if (response.data == "invalido") {
+                        mensajemodal("La ciudad ya se ecuentra registrada");
+                    } else {
+                        console.log(response.data);
+                        mensajemodal("Ciudad Editada Con Éxito");
+                        listarciudades()
+                    }
+                });
+            }
+        }
+    }
 
     //FUNCION PARA TOMAR EL ID DE LA SEDE A ELIMINAR
-    var idEliminarciudad="";
+    var idEliminarciudad = "";
     $scope.listarciudadeliminar = function (IdCiudad) {
         idEliminarciudad = IdCiudad;
         console.log(idEliminarciudad);
     }
-
 
     //FUNCION PARA ELIMINAR SEDE
     $scope.eliminarciudad = function () {
@@ -151,100 +141,96 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
         console.log(idEliminarciudad);
         servicios.sedes(datos).then(function success(response) {
             console.log(response);
-            if(response.data == "noeliminar"){
-                mensajemodal("La Ciudad No Se Puede Eliminar Contiene Registros"); 
-            }else{
-                mensajemodal("La Ciudad Fue Eliminada Con Éxito"); 
+            if (response.data == "noeliminar") {
+                mensajemodal("La Ciudad No Se Puede Eliminar Contiene Registros");
+            } else {
+                mensajemodal("La Ciudad Fue Eliminada Con Éxito");
                 listarciudades()
             }
-            
         });
     }
-    var idciudadselec ="";
+    var idciudadselec = "";
     $scope.elegirCiudad = function (IdCiudad) {
         idciudadselec = IdCiudad;
         console.log(idciudadselec);
-        datos = {accion: "listarsedes", IdCiudad: idciudadselec, IdEmpresa: $LocalStorage.IdEmpresa};        
+        datos = {accion: "listarsedes", IdCiudad: idciudadselec, IdEmpresa: $LocalStorage.IdEmpresa};
         servicios.sedes(datos).then(function success(response) {
             console.log(response);
             $scope.listarsedes = response.data;
         });
     }
 
-
-    
     $scope.editarsede = function (IdSede) {
-        datos = {accion: "editarsede", IdSede: IdSede};        
-        servicios.sedes(datos).then(function success(response) {           
-           $scope.editsede = response.data[0];
+        datos = {accion: "editarsede", IdSede: IdSede};
+        servicios.sedes(datos).then(function success(response) {
+            $scope.editsede = response.data[0];
         });
     }
 
-    $scope.editarlasede = function (IdSede) {    
-        if(comprobarempty($scope.editsede["NombreSede"])){
+    $scope.editarlasede = function (IdSede) {
+        if (comprobarempty($scope.editsede["NombreSede"])) {
             mensajemodal("Debe de Llenar El Campo");
-        } else{
-            if(validarSoloLetra($scope.editsede["NombreSede"])){
+        } else {
+            if (validarSoloLetra($scope.editsede["NombreSede"])) {
                 mensajemodal("Los Campos no deben contener los siguientes caracteres $ ´ #");
-            }else{
-                datos.NombreSede = $scope.NombreSede; 
-                datos = {accion: "editarlasede", IdSede: IdSede, NombreSede: $scope.editsede["NombreSede"]};        
-                servicios.sedes(datos).then(function success(response) { 
-                if(response.data == "invalido"){
-                    mensajemodal("La Sede Ingresada Ya Existe");    
-                }else{
-                    mensajemodal("La Sede Fue Editada Con Exito");
-                    $scope.elegirCiudad(response.data);    
-                }        
+            } else {
+                datos.NombreSede = $scope.NombreSede;
+                datos = {accion: "editarlasede", IdSede: IdSede, NombreSede: $scope.editsede["NombreSede"]};
+                servicios.sedes(datos).then(function success(response) {
+                    if (response.data == "invalido") {
+                        mensajemodal("La Sede Ingresada Ya Existe");
+                    } else {
+                        mensajemodal("La Sede Fue Editada Con Exito");
+                        $scope.elegirCiudad(response.data);
+                    }
                 });
-            }   
+            }
         }
     }
 
     $scope.ingresarsede = function () {
-        if(comprobarempty(idciudadselec)){
+        if (comprobarempty(idciudadselec)) {
             mensajemodal("Debe Seleccionar Primero La Ciudad");
-        }else{
-
-            if(comprobarempty($scope.sede["NombreSede"])){
+        } else {
+            if (comprobarempty($scope.sede["NombreSede"])) {
                 mensajemodal("Debe llenar el campo");
-            }else{
-                if(validarSoloLetra($scope.sede["NombreSede"])){
+            } else {
+                if (validarSoloLetra($scope.sede["NombreSede"])) {
                     mensajemodal("Los Campos no deben contener los siguientes caracteres $ ´ #");
-                }else{
-                    datos = {accion: "ingresarsede", NombreSede	: $scope.sede["NombreSede"], IdCiudad: idciudadselec};
+                } else {
+                    datos = {accion: "ingresarsede", NombreSede: $scope.sede["NombreSede"], IdCiudad: idciudadselec};
                     servicios.sedes(datos).then(function success(response) {
-                    if(response.data == "invalido"){
-                    mensajemodal("La Sede Ingresada Ya Existe");
-                    }else{
-                    mensajemodal("La Sede Fue Registrada Con Exito");
-                    $scope.elegirCiudad(response.data);
-                    $scope.sede.NombreSede = "";
-                    }
+                        if (response.data == "invalido") {
+                            mensajemodal("La Sede Ingresada Ya Existe");
+                        } else {
+                            mensajemodal("La Sede Fue Registrada Con Exito");
+                            $scope.elegirCiudad(response.data);
+                            $scope.sede.NombreSede = "";
+                        }
                     });
                 }
-            }            
+            }
         }
     }
 
-    var idsedeeliminar="";
+    var idsedeeliminar = "";
     $scope.listarsedeeliminar = function (IdSede) {
         idsedeeliminar = IdSede;
         console.log(idsedeeliminar);
     }
-    
+
     //FUNCION PARA ELIMINAR SEDE
     $scope.eliminarsede = function () {
         datos = {accion: "eliminarsede", IdSede: idsedeeliminar};
         console.log(idsedeeliminar);
         servicios.sedes(datos).then(function success(response) {
             console.log(response);
-            if(response.data == "noeliminar"){
-                mensajemodal("La Sede No Se Puede Eliminar Contiene Registros"); 
-            }else{
-                mensajemodal("La Sede Fue Eliminada Con Éxito"); 
+            if (response.data == "noeliminar") {
+                mensajemodal("La Sede No Se Puede Eliminar Contiene Registros");
+            } else {
+                mensajemodal("La Sede Fue Eliminada Con Éxito");
                 $scope.elegirCiudad(idciudadselec);
             }
         });
     }
-}   
+}

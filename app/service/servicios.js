@@ -41,4 +41,7 @@ function servicios($http, urlBase, $httpParamSerializerJQLike) {
     this.Empresas = (data) => {
         return $http.post(urlBase + 'Empresas.php', $httpParamSerializerJQLike(data));
     };
+    this.RecuperarEmpresas = (data) => {
+        return $http.post(urlBase + 'RecuperarEmpresa.php', $httpParamSerializerJQLike(data));
+    };
 }

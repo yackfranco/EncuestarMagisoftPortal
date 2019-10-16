@@ -27,7 +27,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         datos = {accion: "cargarTablaempresas"};
         servicios.Empresas(datos).then(function success(response) {
             console.log(response.data);
-            $scope.empresas = response.data;
+            $scope.empresastabla = response.data;
         });
     }
 
@@ -126,10 +126,10 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
             datos = {accion: "GuardarCalif", IdEmpresa: IdEmpresaGlobal, Nombre: $scope.Nombre.toUpperCase(), Valor: $scope.Valor};
             servicios.Empresas(datos).then(function success(response) {
                 if (response["data"] == "invalido") {
-                    alert("No se permite repetir el valor");
+                    mensajemodal("No se permite repetir el valor");
                 } else {
                     if (response["data"] == "Cinvalido") {
-                        alert("No se permite repetir el nombre");
+                        mensajemodal("No se permite repetir el nombre");
                     } else {
                         $scope.listarCalificaciones(IdEmpresaGlobal);
                         $scope.Nombre = '';
@@ -258,7 +258,7 @@ function InitController($scope, $state, $sessionStorage, servicios, $interval, $
         datos = {accion: "busquedaempresas", datousuario: $scope.busuario};
         console.log($scope.busuario);
         servicios.Empresas(datos).then(function success(response) {
-            $scope.empresas = response.data;
+            $scope.empresastabla = response.data;
         });
     }
 }

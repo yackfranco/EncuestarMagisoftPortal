@@ -32,7 +32,6 @@ $sheet = $spreadsheet->getActiveSheet();
 
 $fechaactual = DevolverUnDato("SELECT NOW()");
 
-$DatosEmpresa = DevolverUnArreglo("SELECT * from datosempresa");
 
 $fechainical = $_REQUEST["gfechainicial"];
 $fechafinal = $_REQUEST["gfechafinal"];
@@ -42,20 +41,23 @@ $IdSede = $_REQUEST["gIdSede"];
 $Pregunta = $_REQUEST["gPregunta"];
 $IdEmpresa = $_REQUEST["IdEmpresa"];
 
+$DatosEmpresa = DevolverUnArreglo("SELECT * from datosempresa where IdEmpresa = $IdEmpresa");
+
 $colorTitulo = "ffffff";
 $colorUsuario = "FF5733";
 
 // //ultima consulta  GROUP BY pregunta.IdPregunta, usuario.IdUsuario, calificacion.NumeroCalif, ciudad.IdCiudad HAVING IdSede = 1 AND IdUsuario = 1 AND IdPregunta = 25";
-$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif,COUNT(*) as Total FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario) join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
-$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario)  join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
-
+//$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif,COUNT(*) as Total FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario) join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
+//$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta,valorcalif.ValorCalif FROM `calificacion` join usuario on (usuario.IdUsuario = calificacion.IdUsuario)  join sede on (sede.IdSede = calificacion.IdSede) join ciudad on (ciudad.IdCiudad = calificacion.IdCiudad) join pregunta on (pregunta.IdPregunta = calificacion.IdPregunta) join valorcalif on (valorcalif.NumeroCalif = calificacion.NumeroCalif)";
+$consultainicial = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta, valorcalif.ValorCalif from calificacion, sede, ciudad, usuario, pregunta, (SELECT * from valorcalif WHERE valorcalif.IdEmpresa = $IdEmpresa) as valorcalif WHERE (valorcalif.NumeroCalif = calificacion.NumeroCalif) AND (usuario.IdUsuario = calificacion.IdUsuario) AND (calificacion.IdSede = sede.IdSede) AND (ciudad.IdCiudad = calificacion.IdCiudad) AND (pregunta.IdPregunta = calificacion.IdPregunta) AND calificacion.IdEmpresa = $IdEmpresa ";
+$consultainicial2 = "SELECT calificacion.*, usuario.NombreCompleto, sede.NombreSede, ciudad.NombreCiudad, pregunta.Pregunta, valorcalif.ValorCalif,COUNT(*) as Total from calificacion, sede, ciudad, usuario, pregunta, (SELECT * from valorcalif WHERE valorcalif.IdEmpresa = $IdEmpresa) as valorcalif WHERE (valorcalif.NumeroCalif = calificacion.NumeroCalif) AND (usuario.IdUsuario = calificacion.IdUsuario) AND (calificacion.IdSede = sede.IdSede) AND (ciudad.IdCiudad = calificacion.IdCiudad) AND (pregunta.IdPregunta = calificacion.IdPregunta) AND calificacion.IdEmpresa = $IdEmpresa ";
 if ($fechainical != null && $fechafinal != null) {
-    $concatF1F2 = " WHERE calificacion.IdEmpresa = $IdEmpresa and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechafinal 23:59:59')";
+    $concatF1F2 = "  and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechafinal 23:59:59')";
     $consultainicial = $consultainicial . $concatF1F2;
     $consultainicial2 = $consultainicial2 . $concatF1F2;
 }
 if ($fechainical != null && $fechafinal == null) {
-    $concatF1F2 = " WHERE calificacion.IdEmpresa = $IdEmpresa and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechainical 23:59:59')";
+    $concatF1F2 = " and (calificacion.FechaCalif >= '$fechainical 00:00:00' AND calificacion.FechaCalif <= '$fechainical 23:59:59')";
     $consultainicial = $consultainicial . $concatF1F2;
     $consultainicial2 = $consultainicial2 . $concatF1F2;
 }
@@ -79,8 +81,8 @@ if ($Pregunta != null && $Pregunta != "") {
     $consultainicial = $consultainicial . $concatPregunta;
     $consultainicial2 = $consultainicial2 . $concatPregunta;
 }
-//     print_r($consultainicial);
-//     exit();
+
+//print_r($consultainicial);
 //     ///INGRESAR UNA IMAGEN AL EXCEL
 $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
 $drawing->setName('LOGO');
@@ -123,8 +125,9 @@ $contar = 12;
 
 $ContarNeutro = 0;
 $contartotal = 0;
-// echo $consultainicial;
+//     echo $consultainicial;
 // $valores = hacerConsulta($consultainicial);
+//    echo $consultainicial." GROUP BY ciudad.IdCiudad";
 $SQLIdCiudad = hacerConsulta($consultainicial . " GROUP BY ciudad.IdCiudad");
 
 foreach ($SQLIdCiudad as $valueCiudad) {
@@ -138,7 +141,7 @@ foreach ($SQLIdCiudad as $valueCiudad) {
     $contar = $contar + 2;
 
     // print_r("Ciudad ".$valueCiudad['IdCiudad']);
-
+//echo $consultainicial." GROUP BY sede.IdSede, ciudad.IdCiudad HAVING IdCiudad =".$valueCiudad['IdCiudad'];
     $SQLIdSede = hacerConsulta($consultainicial . " GROUP BY sede.IdSede, ciudad.IdCiudad HAVING IdCiudad =" . $valueCiudad['IdCiudad']);
     foreach ($SQLIdSede as $valueSede) {
 
@@ -149,6 +152,7 @@ foreach ($SQLIdCiudad as $valueCiudad) {
         $contar = $contar + 2;
 
         //     // print_r("Sede ".$valueSede['IdSede']);
+//            echo $consultainicial." GROUP BY usuario.IdUsuario, sede.IdSede HAVING IdSede =".$valueSede['IdSede'];
         $SQLIdUsuario = hacerConsulta($consultainicial . " GROUP BY usuario.IdUsuario, sede.IdSede HAVING IdSede =" . $valueSede['IdSede']);
         foreach ($SQLIdUsuario as $valueUsuario) {
             $sheet->setCellValue("A" . $contar, $valueUsuario['NombreCompleto']);
@@ -163,7 +167,7 @@ foreach ($SQLIdCiudad as $valueCiudad) {
             //$sheet->getStyle('A'.$contar.':I'.$contar)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB($colorUsuario);
             $contar = $contar + 2;
 
-            // print_r("Sede ".$valueSede['IdSede']);
+//                 print_r($consultainicial." GROUP BY pregunta.IdPregunta, usuario.IdUsuario, sede.IdSede HAVING IdUsuario =".$valueUsuario['IdUsuario']." AND IdSede =".$valueSede['IdSede']);
             $SQLIdPregunta = hacerConsulta($consultainicial . " GROUP BY pregunta.IdPregunta, usuario.IdUsuario, sede.IdSede HAVING IdUsuario =" . $valueUsuario['IdUsuario'] . " AND IdSede =" . $valueSede['IdSede']);
             //echo $consultainicial."GROUP BY pregunta.IdPregunta, usuario.IdUsuario, sede.IdSede HAVING IdUsuario =".$valueUsuario['IdUsuario'];
             foreach ($SQLIdPregunta as $valuePregunta) {
@@ -181,8 +185,6 @@ foreach ($SQLIdCiudad as $valueCiudad) {
                 $contar = $contar + 1;
 
                 $SQLTotal = hacerConsulta($consultainicial2 . " GROUP BY pregunta.IdPregunta, usuario.IdUsuario, calificacion.NumeroCalif, ciudad.IdCiudad HAVING IdSede =" . $valueSede['IdSede'] . " AND IdUsuario =" . $valueUsuario['IdUsuario'] . " AND IdPregunta =" . $valuePregunta['IdPregunta']);
-                // echo $consultainicial2." GROUP BY pregunta.IdPregunta, usuario.IdUsuario, calificacion.NumeroCalif, ciudad.IdCiudad HAVING IdSede =".$valueSede['IdSede']." AND IdUsuario =".$valueUsuario['IdUsuario']." AND IdPregunta =".$valuePregunta['IdPregunta'];
-                //echo $consultainicial."GROUP BY pregunta.IdPregunta, usuario.IdUsuario, sede.IdSede HAVING IdUsuario =".$valueUsuario['IdUsuario'];
                 foreach ($SQLTotal as $valueTotal) {
 
                     $sheet->setCellValue("A" . $contar, $valueTotal['ValorCalif']);

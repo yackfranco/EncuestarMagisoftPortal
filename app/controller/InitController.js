@@ -59,13 +59,15 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
             return;
         }
         $scope.usuario.accion = "entrar";
-        if ($scope.usuario.usuario == "ADMINISTRADOR" && $scope.usuario.contrasena == "1235813A100") {
-            $LocalStorage.usuarioguardado = "ingetronik";
-            $LocalStorage.rolguardado = "ADMINISTRADOR";
-            $LocalStorage.nombrecompletoguardado = "ADMINISTRADOR";
-            $state.go('Empresas');
-        } else {
-            servicios.login($scope.usuario).then(function success(response) {
+
+
+        servicios.login($scope.usuario).then(function success(response) {
+            if (response.data == "SUPER") {
+                $LocalStorage.usuarioguardado = "ingetronik";
+                $LocalStorage.rolguardado = "ADMINISTRADOR";
+                $LocalStorage.nombrecompletoguardado = "ADMINISTRADOR";
+                $state.go('Empresas');
+            } else {
                 if (response.data == "usuariomal") {
                     mensajemodal("El usuario no esta registrado, intente con otro", "USUARIO INCORRECTO");
                     return;
@@ -93,8 +95,8 @@ function InitController($scope, $state, $sessionStorage, servicios, $LocalStorag
                         }
                     }
                 }
-            });
-        }
+            }
+        });
     }
 
     $scope.RecuperarContrasenalogin = function () {
